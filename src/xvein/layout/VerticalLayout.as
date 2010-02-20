@@ -25,9 +25,11 @@ package xvein.layout
         public function VerticalLayout(container:DisplayObjectContainer,
                                         x:Number = 0, y:Number = 0,
                                         width:Number = 100, height:Number = 100,
-                                        align:String = "TL", gap:Number = 5)
+                                        align:String = "TL", gap:Number = 5,
+                                        autoLayoutWhenAdd:Boolean = false,
+                                        autoLayoutWhenChange:Boolean = true)
         {
-            super(container);
+            super(container, autoLayoutWhenAdd, autoLayoutWhenChange);
             _x = x;
             _y = y;
             _width = width;

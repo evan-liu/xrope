@@ -18,93 +18,23 @@ package xvein.layout
         /**
          * Construct a <code>XLineLayout</code>.
          */
-        public function AbstractLayoutGroup(container:DisplayObjectContainer)
+        public function AbstractLayoutGroup(container:DisplayObjectContainer,
+                                            autoLayoutWhenAdd:Boolean = false,
+                                            autoLayoutWhenChange:Boolean = true)
         {
             _container = container;
+            _autoLayoutWhenAdd = autoLayoutWhenAdd;
+            _autoLayoutWhenChange = autoLayoutWhenChange;
         }
         //======================================================================
         //  Protected methods
         //======================================================================
         protected var atomMap:Dictionary = new Dictionary();
+        protected var isLayouted:Boolean = false;
+        protected var isChanged:Boolean = false;
         //======================================================================
         //  Properties: IXLayoutGroup
         //======================================================================
-        //------------------------------
-        //  x
-        //------------------------------
-        protected var _x:Number = 0;
-        /**
-         * @inheritDoc
-         */
-        public function get x():Number
-        {
-            return _x;
-        }
-        /**
-         * @private
-         */
-        public function set x(value:Number):void
-        {
-            _x = value;
-            // TODO Set x for all elements.
-        }
-        //------------------------------
-        //  y
-        //------------------------------
-        protected var _y:Number = 0;
-        /**
-         * @inheritDoc
-         */
-        public function get y():Number
-        {
-            return _y;
-        }
-        /**
-         * @private
-         */
-        public function set y(value:Number):void
-        {
-            _y = value;
-            // TODO Set y for all elements
-        }
-        //------------------------------
-        //  width
-        //------------------------------
-        protected var _width:Number = 0;
-        /**
-         * @inheritDoc
-         */
-        public function get width():Number
-        {
-            return _width;
-        }
-        /**
-         * @private
-         */
-        public function set width(value:Number):void
-        {
-            _width = value;
-            // TODO Relayout.
-        }
-        //------------------------------
-        //  height
-        //------------------------------
-        protected var _height:Number;
-        /**
-         * @inheritDoc
-         */
-        public function get height():Number
-        {
-            return _height;
-        }
-        /**
-         * @private
-         */
-        public function set height(value:Number):void
-        {
-            _height = value;
-            // TODO Relayout.
-        }
         //------------------------------
         //  container
         //------------------------------
@@ -128,6 +58,134 @@ package xvein.layout
             return _elements.concat();
         }
         //------------------------------
+        //  x
+        //------------------------------
+        protected var _x:Number = 0;
+        /**
+         * @inheritDoc
+         */
+        public function get x():Number
+        {
+            return _x;
+        }
+        /**
+         * @private
+         */
+        public function set x(value:Number):void
+        {
+            if (value == _x)
+            {
+                return;
+            }
+            if (isLayouted)
+            {
+                if (_autoLayoutWhenChange)
+                {
+                    var change:Number = value - _x;
+                    for each (var element:ILayoutElement in _elements)
+                    {
+                        element.x += change;
+                    }
+                }
+                else
+                {
+                    isLayouted = true;
+                }
+            }
+            _x = value;
+        }
+        //------------------------------
+        //  y
+        //------------------------------
+        protected var _y:Number = 0;
+        /**
+         * @inheritDoc
+         */
+        public function get y():Number
+        {
+            return _y;
+        }
+        /**
+         * @private
+         */
+        public function set y(value:Number):void
+        {
+            if (value == _y)
+            {
+                return;
+            }
+            if (isLayouted)
+            {
+                if (_autoLayoutWhenChange)
+                {
+                    var change:Number = value - _y;
+                    for each (var element:ILayoutElement in _elements)
+                    {
+                        element.y += change;
+                    }
+                }
+                else
+                {
+                    isLayouted = true;
+                }
+            }
+            _y = value;
+        }
+        //------------------------------
+        //  width
+        //------------------------------
+        protected var _width:Number = 0;
+        /**
+         * @inheritDoc
+         */
+        public function get width():Number
+        {
+            return _width;
+        }
+        /**
+         * @private
+         */
+        public function set width(value:Number):void
+        {
+            if (value == _width)
+            {
+                return;
+            }
+            _width = value;
+            isChanged = true;
+            if (isLayouted && _autoLayoutWhenChange)
+            {
+                layout();
+            }
+        }
+        //------------------------------
+        //  height
+        //------------------------------
+        protected var _height:Number;
+        /**
+         * @inheritDoc
+         */
+        public function get height():Number
+        {
+            return _height;
+        }
+        /**
+         * @private
+         */
+        public function set height(value:Number):void
+        {
+            if (value == _height)
+            {
+                return;
+            }
+            _height = value;
+            isChanged = true;
+            if (isLayouted && _autoLayoutWhenChange)
+            {
+                layout();
+            }
+        }
+        //------------------------------
         //  align
         //------------------------------
         protected var _align:String = "L";
@@ -143,7 +201,16 @@ package xvein.layout
          */
         public function set align(value:String):void
         {
+            if (value == _align)
+            {
+                return;
+            }
             _align = value;
+            isChanged = true;
+            if (isLayouted && _autoLayoutWhenChange)
+            {
+                layout();
+            }
         }
         //------------------------------
         //  horizontalGap
@@ -161,7 +228,16 @@ package xvein.layout
          */
         public function set horizontalGap(value:Number):void
         {
+            if (value == _horizontalGap)
+            {
+                return;
+            }
             _horizontalGap = value;
+            isChanged = true;
+            if (isLayouted && _autoLayoutWhenChange)
+            {
+                layout();
+            }
         }
         //------------------------------
         //  verticalGap
@@ -179,7 +255,52 @@ package xvein.layout
          */
         public function set verticalGap(value:Number):void
         {
+            if (value == _verticalGap)
+            {
+                return;
+            }
             _verticalGap = value;
+            isChanged = true;
+            if (isLayouted && _autoLayoutWhenChange)
+            {
+                layout();
+            }
+        }
+        //------------------------------
+        //  autoLayoutWhenAdd
+        //------------------------------
+        protected var _autoLayoutWhenAdd:Boolean = false;
+        /**
+         * @inheritDoc
+         */
+        public function get autoLayoutWhenAdd():Boolean
+        {
+            return _autoLayoutWhenAdd;
+        }
+        /**
+         * @private
+         */
+        public function set autoLayoutWhenAdd(value:Boolean):void
+        {
+            _autoLayoutWhenAdd = value;
+        }
+        //------------------------------
+        //  autoLayoutWhenChange
+        //------------------------------
+        protected var _autoLayoutWhenChange:Boolean = false;
+        /**
+         * @inheritDoc
+         */
+        public function get autoLayoutWhenChange():Boolean
+        {
+            return _autoLayoutWhenChange;
+        }
+        /**
+         * @private
+         */
+        public function set autoLayoutWhenChange(value:Boolean):void
+        {
+            _autoLayoutWhenChange = value;
         }
         //======================================================================
         //  Public methods: IXLayoutGroup
@@ -197,6 +318,11 @@ package xvein.layout
             {
                 addOne(element);
             }
+            isChanged = true;
+            if (_autoLayoutWhenAdd)
+            {
+                layout();
+            }
         }
         /**
          * @inheritDoc
@@ -210,6 +336,11 @@ package xvein.layout
             for each (var element:* in elements)
             {
                 removeOne(element);
+            }
+            isChanged = true;
+            if (_autoLayoutWhenAdd)
+            {
+                layout();
             }
         }
         /**
@@ -236,6 +367,10 @@ package xvein.layout
          */
         public function layout():void
         {
+            if (isLayouted && !isChanged)
+            {
+                return;
+            }
             if (_elements.length > 0)
             {
                 layoutElements();
@@ -244,6 +379,8 @@ package xvein.layout
             {
                 layoutContainer();
             }
+            isLayouted = true;
+            isChanged = false;
         }
         //======================================================================
         //  Protected methods

@@ -58,6 +58,28 @@ package xvein.core
          * @inheritDoc
          */
         function set verticalGap(value:Number):void;
+        //------------------------------
+        //  autoLayoutWhenAdd
+        //------------------------------
+        /**
+         * If auto layout when add a new element.
+         */
+        function get autoLayoutWhenAdd():Boolean;
+        /**
+         * @inheritDoc
+         */
+        function set autoLayoutWhenAdd(value:Boolean):void;
+        //------------------------------
+        //  autoLayoutWhenChange
+        //------------------------------
+        /**
+         * If auto layout when changed.
+         */
+        function get autoLayoutWhenChange():Boolean;
+        /**
+         * @inheritDoc
+         */
+        function set autoLayoutWhenChange(value:Boolean):void;
         //======================================================================
         //  Public methods
         //======================================================================
