@@ -24,7 +24,7 @@ package xvein.layout
          */
         public function VerticalLayout(container:DisplayObjectContainer,
                                         x:Number = 0, y:Number = 0,
-                                        width:Number = 100, height:Number = 100,
+                                        width:Number = -1, height:Number = -1,
                                         align:String = "TL", gap:Number = 5,
                                         autoLayoutWhenAdd:Boolean = false,
                                         autoLayoutWhenChange:Boolean = true)
@@ -40,6 +40,10 @@ package xvein.layout
         //======================================================================
         //  Overridden methods
         //======================================================================
+        override protected function fixWidth():void
+        {
+            _width = getMaxWidth();
+        }
         override protected function getStartY():Number
         {
             switch (_align)

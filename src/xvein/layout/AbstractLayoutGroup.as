@@ -385,6 +385,25 @@ package xvein.layout
         //======================================================================
         //  Protected methods
         //======================================================================
+        protected function fixSize():void
+        {
+            if (_width <= 0)
+            {
+                fixWidth();
+            }
+            if (_height <= 0)
+            {
+                fixHeight();
+            }
+        }
+        protected function fixWidth():void
+        {
+            _width = getTotalWidth() + _horizontalGap * (_elements.length - 1);
+        }
+        protected function fixHeight():void
+        {
+            _height = getTotalHeight() + _verticalGap * (_elements.length - 1);
+        }
         protected function addOne(element:*):void
         {
             if (has(element))
@@ -442,6 +461,7 @@ package xvein.layout
         }
         protected function layoutElements():void
         {
+            fixSize();
             var xAlgorithm:ILayoutAlgorithm = getXAlgorithm();
             xAlgorithm.beReady(this, "x", "width", getStartX(), _horizontalGap);
             var yAlgorithm:ILayoutAlgorithm = getYAlgorithm();
@@ -485,6 +505,30 @@ package xvein.layout
             for each (var element:ILayoutElement in _elements)
             {
                 result += element.height;
+            }
+            return result;
+        }
+        protected function getMaxWidth():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                if (element.width > result)
+                {
+                    result = element.width;
+                }
+            }
+            return result;
+        }
+        protected function getMaxHeight():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                if (element.height > result)
+                {
+                    result = element.height;
+                }
             }
             return result;
         }

@@ -40,6 +40,10 @@ package xvein.layout
         //======================================================================
         //  Overridden methods
         //======================================================================
+        override protected function fixHeight():void
+        {
+            _height = getMaxHeight();
+        }
         override protected function getStartX():Number
         {
             switch (_align)
