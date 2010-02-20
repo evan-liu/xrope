@@ -1,7 +1,8 @@
 package
 {
-    import xvein.layout.XAlign;
-    import xvein.layout.XVerticalLayout;
+    import xvein.layout.LayoutAlign;
+    import xvein.layout.VerticalLayout;
+
     import flash.display.Shape;
     import flash.display.Sprite;
     /**
@@ -22,16 +23,16 @@ package
         //======================================================================
         private function demo():void
         {
-            var v1:XVerticalLayout = new XVerticalLayout(this, 100, 50, 50, 300, XAlign.TOP);
-            var v2:XVerticalLayout = new XVerticalLayout(this, 250, 50, 50, 300, XAlign.BOTTOM);
-            var v3:XVerticalLayout = new XVerticalLayout(this, 400, 50, 50, 300, XAlign.CENTER);
+            var v1:VerticalLayout = new VerticalLayout(this, 100, 50, 50, 300, LayoutAlign.TOP_LEFT);
+            var v2:VerticalLayout = new VerticalLayout(this, 250, 50, 50, 300, LayoutAlign.BOTTOM_RIGHT);
+            var v3:VerticalLayout = new VerticalLayout(this, 400, 50, 50, 300, LayoutAlign.CENTER);
             fill(v1);
             fill(v2);
             fill(v3);
         }
-        private function fill(target:XVerticalLayout):void
+        private function fill(target:VerticalLayout):void
         {
-            for (var i:int = 0; i < 3; i++)
+            for (var i:int = 0;i < 3;i++)
             {
                 target.add(getShape());
             }

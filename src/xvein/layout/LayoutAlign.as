@@ -4,7 +4,7 @@ package xvein.layout
      * Constants for align values.
      * @author eidiot
      */
-    public class XAlign
+    public class LayoutAlign
     {
         public static const LEFT:String = "L";
         public static const TOP_LEFT:String = "TL";

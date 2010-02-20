@@ -6,7 +6,7 @@ package xvein.core
      *
      * @author eidiot
      */
-    public interface IXLayoutGroup extends IXLayoutElement
+    public interface ILayoutGroup extends ILayoutElement
     {
         //======================================================================
         //  Properties

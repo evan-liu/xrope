@@ -1,7 +1,8 @@
 package xvein.layout
 {
-    import xvein.core.IXLayoutElement;
-    import xvein.core.IXLayoutGroup;
+    import xvein.core.ILayoutAlgorithm;
+    import xvein.core.ILayoutElement;
+    import xvein.core.ILayoutGroup;
 
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
@@ -9,7 +10,7 @@ package xvein.layout
     /**
      * @author eidiot
      */
-    public class AbstractXLayoutGroup implements IXLayoutGroup
+    public class AbstractLayoutGroup implements ILayoutGroup
     {
         //======================================================================
         //  Constructor
@@ -17,7 +18,7 @@ package xvein.layout
         /**
          * Construct a <code>XLineLayout</code>.
          */
-        public function AbstractXLayoutGroup(container:DisplayObjectContainer)
+        public function AbstractLayoutGroup(container:DisplayObjectContainer)
         {
             _container = container;
         }
@@ -220,7 +221,7 @@ package xvein.layout
             {
                 return false;
             }
-            if (element is IXLayoutElement)
+            if (element is ILayoutElement)
             {
                 return _elements.indexOf(element) != -1;
             }
@@ -253,7 +254,7 @@ package xvein.layout
             {
                 return;
             }
-            if (element is IXLayoutElement)
+            if (element is ILayoutElement)
             {
                 _elements.push(element);
             }
@@ -264,16 +265,17 @@ package xvein.layout
         }
         protected function addAtom(element:DisplayObject):void
         {
-            if (element.parent != _container)             {
+            if (element.parent != _container)
+            {
                 _container.addChild(element);
             }
-            var atom:XAtomLayout = new XAtomLayout(element);
+            var atom:AtomLayout = new AtomLayout(element);
             atomMap[element] = atom;
             _elements.push(atom);
         }
         protected function removeOne(element:*):void
         {
-            if (element is IXLayoutElement)
+            if (element is ILayoutElement)
             {
                 var index:int = _elements.indexOf(element);
                 if (index != -1)
@@ -303,6 +305,51 @@ package xvein.layout
         }
         protected function layoutElements():void
         {
+            var xAlgorithm:ILayoutAlgorithm = getXAlgorithm();
+            xAlgorithm.beReady(this, "x", "width", getStartX(), _horizontalGap);
+            var yAlgorithm:ILayoutAlgorithm = getYAlgorithm();
+            yAlgorithm.beReady(this, "y", "height", getStartY(), _verticalGap);
+            var previousElement:ILayoutElement;
+            for each (var element:ILayoutElement in _elements)
+            {
+                element.x = xAlgorithm.calculate(element, previousElement);
+                element.y = yAlgorithm.calculate(element, previousElement);
+                previousElement = element;
+            }
+        }
+        protected function getStartX():Number
+        {
+            return _x;
+        }
+        protected function getStartY():Number
+        {
+            return _y;
+        }
+        protected function getXAlgorithm():ILayoutAlgorithm
+        {
+            return null;
+        }
+        protected function getYAlgorithm():ILayoutAlgorithm
+        {
+            return null;
+        }
+        protected function getTotalWidth():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                result += element.width;
+            }
+            return result;
+        }
+        protected function getTotalHeight():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                result += element.height;
+            }
+            return result;
         }
     }
 }

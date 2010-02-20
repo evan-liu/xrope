@@ -1,6 +1,6 @@
 package xvein.layout
 {
-    import xvein.core.IXLayoutElement;
+    import xvein.core.ILayoutElement;
 
     import flash.display.DisplayObject;
     import flash.geom.Rectangle;
@@ -9,7 +9,7 @@ package xvein.layout
      *
      * @author eidiot
      */
-    public class XAtomLayout implements IXLayoutElement
+    public class AtomLayout implements ILayoutElement
     {
         //======================================================================
         //  Constructor
@@ -17,7 +17,7 @@ package xvein.layout
         /**
          * Construct a <code>XAtomLayout</code>.
          */
-        public function XAtomLayout(target:DisplayObject)
+        public function AtomLayout(target:DisplayObject)
         {
             _target = target;
             targetBounds = _target.getBounds(_target);
