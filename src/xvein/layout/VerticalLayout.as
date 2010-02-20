@@ -25,7 +25,7 @@ package xvein.layout
         public function VerticalLayout(container:DisplayObjectContainer,
                                         x:Number = 0, y:Number = 0,
                                         width:Number = 100, height:Number = 100,
-                                        align:String = "T", gap:Number = 5)
+                                        align:String = "TL", gap:Number = 5)
         {
             super(container);
             _x = x;
@@ -47,6 +47,8 @@ package xvein.layout
                 case LayoutAlign.BOTTOM_RIGHT:
                     return _y + _height;
                 case LayoutAlign.CENTER:
+                case LayoutAlign.LEFT:
+                case LayoutAlign.RIGHT:
                     var totalGap:Number = _verticalGap * (_elements.length - 1);
                     return _y + (_height - getTotalHeight() - totalGap) / 2;
             }

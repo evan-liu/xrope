@@ -25,7 +25,7 @@ package xvein.layout
         public function HorizontalLayout(container:DisplayObjectContainer,
                                         x:Number = 0, y:Number = 0,
                                         width:Number = -1, height:Number = -1,
-                                        align:String = "T", gap:Number = 5)
+                                        align:String = "TL", gap:Number = 5)
         {
             super(container);
             _x = x;
@@ -47,6 +47,8 @@ package xvein.layout
                 case LayoutAlign.BOTTOM_RIGHT:
                     return _x + _width;
                 case LayoutAlign.CENTER:
+                case LayoutAlign.TOP:
+                case LayoutAlign.BOTTOM:
                     var totalGap:Number = _horizontalGap * (_elements.length- 1);
                     return _x + (_width - getTotalWidth() - totalGap) / 2;
             }
