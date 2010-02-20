@@ -1,9 +1,9 @@
 package
 {
-    import xvein.core.ILayoutGroup;
-    import xvein.layout.HorizontalLayout;
-    import xvein.layout.LayoutAlign;
-    import xvein.layout.VerticalLayout;
+    import xrope.ILayoutGroup;
+    import xrope.HorizontalLayout;
+    import xrope.LayoutAlign;
+    import xrope.VerticalLayout;
 
     import flash.display.Shape;
     import flash.display.Sprite;
