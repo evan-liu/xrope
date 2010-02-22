@@ -1,8 +1,8 @@
 package xrope
 {
-    
-    
-    
+
+
+
 
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
@@ -215,7 +215,7 @@ package xrope
         //------------------------------
         //  horizontalGap
         //------------------------------
-        protected var _horizontalGap:Number;
+        protected var _horizontalGap:Number = 5;
         /**
          * @inheritDoc
          */
@@ -242,7 +242,7 @@ package xrope
         //------------------------------
         //  verticalGap
         //------------------------------
-        protected var _verticalGap:Number = 0;
+        protected var _verticalGap:Number = 5;
         /**
          * @inheritDoc
          */
