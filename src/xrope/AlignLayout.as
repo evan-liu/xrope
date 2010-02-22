@@ -62,7 +62,6 @@ package xrope
         {
             for each (var alignGroup:ILayoutGroup in alignMap)
             {
-                trace(alignGroup.elements);
                 alignGroup.layout();
             }
         }
