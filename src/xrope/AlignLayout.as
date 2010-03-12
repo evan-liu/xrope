@@ -95,7 +95,7 @@ package xrope
         {
             if (!alignMap[align])
             {
-                alignMap[align] = new HorizontalLayout(_container, _x, _y,
+                alignMap[align] = new HLineLayout(_container, _x, _y,
                                       _width, _height, align,
                                       _horizontalGap, _autoLayoutWhenAdd,
                                       _autoLayoutWhenChange);

@@ -1,28 +1,25 @@
 package xrope
 {
-    
-    import xrope.algorithms.MinAlgorithm;
-    import xrope.algorithms.MaxAlgorithm;
     import xrope.algorithms.CenterAlgorithm;
-    import xrope.algorithms.BackwardAlgorithm;
-    import xrope.algorithms.ForwardAlgorithm;
+    import xrope.algorithms.MaxAlgorithm;
+    import xrope.algorithms.MinAlgorithm;
 
     import flash.display.DisplayObjectContainer;
     /**
      * @author eidiot
      */
-    public class HorizontalLayout extends AbstractLayoutGroup
+    public class VLineLayout extends AbstractLayoutGroup
     {
         //======================================================================
         //  Constructor
         //======================================================================
         /**
-         * Construct a <code>HorizontalLayout</code>.
+         * Construct a <code>XLineLayout</code>.
          * @param container     Container of the layout group.
          * @param align         Align of the layout group.
          * @param gap           Space of the layout elements in the group.
          */
-        public function HorizontalLayout(container:DisplayObjectContainer,
+        public function VLineLayout(container:DisplayObjectContainer,
                                         x:Number = 0, y:Number = 0,
                                         width:Number = -1, height:Number = -1,
                                         align:String = "TL", gap:Number = 5,
@@ -35,52 +32,41 @@ package xrope
             _width = width;
             _height = height;
             _align = align;
-            _horizontalGap = gap;
+            _verticalGap = gap;
         }
         //======================================================================
         //  Overridden methods
         //======================================================================
-        override protected function fixHeight():void
+        override protected function fixWidth():void
         {
-            _height = getMaxHeight();
+            _width = getMaxWidth();
         }
-        override protected function getStartX():Number
+        override protected function getStartY():Number
         {
             switch (_align)
             {
-                case LayoutAlign.RIGHT:
-                case LayoutAlign.TOP_RIGHT:
-                case LayoutAlign.BOTTOM_RIGHT:
-                    return _x + _width;
-                case LayoutAlign.CENTER:
-                case LayoutAlign.TOP:
                 case LayoutAlign.BOTTOM:
-                    var totalGap:Number = _horizontalGap * (_elements.length- 1);
-                    return _x + (_width - getTotalWidth() - totalGap) / 2;
+                case LayoutAlign.BOTTOM_LEFT:
+                case LayoutAlign.BOTTOM_RIGHT:
+                    return _y + _height - getTotalHeight();
+                case LayoutAlign.CENTER:
+                case LayoutAlign.LEFT:
+                case LayoutAlign.RIGHT:
+                    var totalGap:Number = _verticalGap * (_elements.length - 1);
+                    return _y + (_height - getTotalHeight() - totalGap) / 2;
             }
-            return _x;
+            return _y;
         }
         override protected function getXAlgorithm():ILayoutAlgorithm
         {
             switch (_align)
             {
+                case LayoutAlign.LEFT:
+                case LayoutAlign.TOP_LEFT:
+                case LayoutAlign.BOTTOM_LEFT:
+                    return new MinAlgorithm();
                 case LayoutAlign.RIGHT:
                 case LayoutAlign.TOP_RIGHT:
-                case LayoutAlign.BOTTOM_RIGHT:
-                    return new BackwardAlgorithm();
-            }
-            return new ForwardAlgorithm();
-        }
-        override protected function getYAlgorithm():ILayoutAlgorithm
-        {
-            switch (_align)
-            {
-                case LayoutAlign.TOP:
-                case LayoutAlign.TOP_LEFT:
-                case LayoutAlign.TOP_RIGHT:
-                    return new MinAlgorithm();
-                case LayoutAlign.BOTTOM:
-                case LayoutAlign.BOTTOM_LEFT:
                 case LayoutAlign.BOTTOM_RIGHT:
                     return new MaxAlgorithm();
             }

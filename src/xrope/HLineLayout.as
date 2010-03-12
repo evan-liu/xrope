@@ -1,28 +1,25 @@
 package xrope
 {
-    
-    import xrope.algorithms.ForwardAlgorithm;
-    import xrope.algorithms.MinAlgorithm;
-    import xrope.algorithms.BackwardAlgorithm;
     import xrope.algorithms.CenterAlgorithm;
     import xrope.algorithms.MaxAlgorithm;
+    import xrope.algorithms.MinAlgorithm;
 
     import flash.display.DisplayObjectContainer;
     /**
      * @author eidiot
      */
-    public class VerticalLayout extends AbstractLayoutGroup
+    public class HLineLayout extends AbstractLayoutGroup
     {
         //======================================================================
         //  Constructor
         //======================================================================
         /**
-         * Construct a <code>XLineLayout</code>.
+         * Construct a <code>HorizontalLayout</code>.
          * @param container     Container of the layout group.
          * @param align         Align of the layout group.
          * @param gap           Space of the layout elements in the group.
          */
-        public function VerticalLayout(container:DisplayObjectContainer,
+        public function HLineLayout(container:DisplayObjectContainer,
                                         x:Number = 0, y:Number = 0,
                                         width:Number = -1, height:Number = -1,
                                         align:String = "TL", gap:Number = 5,
@@ -35,56 +32,45 @@ package xrope
             _width = width;
             _height = height;
             _align = align;
-            _verticalGap = gap;
+            _horizontalGap = gap;
         }
         //======================================================================
         //  Overridden methods
         //======================================================================
-        override protected function fixWidth():void
+        override protected function fixHeight():void
         {
-            _width = getMaxWidth();
+            _height = getMaxHeight();
         }
-        override protected function getStartY():Number
+        override protected function getStartX():Number
         {
             switch (_align)
             {
-                case LayoutAlign.BOTTOM:
-                case LayoutAlign.BOTTOM_LEFT:
-                case LayoutAlign.BOTTOM_RIGHT:
-                    return _y + _height;
-                case LayoutAlign.CENTER:
-                case LayoutAlign.LEFT:
-                case LayoutAlign.RIGHT:
-                    var totalGap:Number = _verticalGap * (_elements.length - 1);
-                    return _y + (_height - getTotalHeight() - totalGap) / 2;
-            }
-            return _y;
-        }
-        override protected function getXAlgorithm():ILayoutAlgorithm
-        {
-            switch (_align)
-            {
-                case LayoutAlign.LEFT:
-                case LayoutAlign.TOP_LEFT:
-                case LayoutAlign.BOTTOM_LEFT:
-                    return new MinAlgorithm();
                 case LayoutAlign.RIGHT:
                 case LayoutAlign.TOP_RIGHT:
                 case LayoutAlign.BOTTOM_RIGHT:
-                    return new MaxAlgorithm();
+                    return _x + _width - getTotalWidth();
+                case LayoutAlign.CENTER:
+                case LayoutAlign.TOP:
+                case LayoutAlign.BOTTOM:
+                    var totalGap:Number = _horizontalGap * (_elements.length- 1);
+                    return _x + (_width - getTotalWidth() - totalGap) / 2;
             }
-            return new CenterAlgorithm();
+            return _x;
         }
         override protected function getYAlgorithm():ILayoutAlgorithm
         {
             switch (_align)
             {
+                case LayoutAlign.TOP:
+                case LayoutAlign.TOP_LEFT:
+                case LayoutAlign.TOP_RIGHT:
+                    return new MinAlgorithm();
                 case LayoutAlign.BOTTOM:
                 case LayoutAlign.BOTTOM_LEFT:
                 case LayoutAlign.BOTTOM_RIGHT:
-                    return new BackwardAlgorithm();
+                    return new MaxAlgorithm();
             }
-            return new ForwardAlgorithm();
+            return new CenterAlgorithm();
         }
     }
 }

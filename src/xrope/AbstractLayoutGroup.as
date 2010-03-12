@@ -4,6 +4,7 @@ package xrope
 
 
 
+    import xrope.algorithms.ForwardAlgorithm;
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
     import flash.utils.Dictionary;
@@ -484,11 +485,11 @@ package xrope
         }
         protected function getXAlgorithm():ILayoutAlgorithm
         {
-            return null;
+            return new ForwardAlgorithm();
         }
         protected function getYAlgorithm():ILayoutAlgorithm
         {
-            return null;
+            return new ForwardAlgorithm();
         }
         protected function getTotalWidth():Number
         {

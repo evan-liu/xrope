@@ -1,9 +1,9 @@
 package
 {
-    import xrope.HorizontalLayout;
+    import xrope.HLineLayout;
     import xrope.ILayoutGroup;
     import xrope.LayoutAlign;
-    import xrope.VerticalLayout;
+    import xrope.VLineLayout;
 
     import flash.display.DisplayObject;
     import flash.display.Shape;
@@ -30,7 +30,7 @@ package
         //======================================================================
         private function demo():void
         {
-            var topGroup:VerticalLayout = new VerticalLayout(this, 10, 10);
+            var topGroup:VLineLayout = new VLineLayout(this, 10, 10);
             addLine(topGroup, getLabel("Name:", 40), getInput());
             addLine(topGroup, getLabel("Mail:", 40), getInput());
             addLine(topGroup, getLabel("Site:", 40), getInput());
@@ -68,14 +68,14 @@ package
                 drawRoundRect(0, 0, 80, 20, 5);
                 endFill();
             }
-            var layout:HorizontalLayout = new HorizontalLayout(result, 0, 0, result.width, result.height, LayoutAlign.CENTER);
+            var layout:HLineLayout = new HLineLayout(result, 0, 0, result.width, result.height, LayoutAlign.CENTER);
             layout.add(getLabel(label));
             layout.layout();
             return result;
         }
-        private function addLine(group:ILayoutGroup, ...elements):HorizontalLayout
+        private function addLine(group:ILayoutGroup, ...elements):HLineLayout
         {
-            var result:HorizontalLayout = new HorizontalLayout(group.container,
+            var result:HLineLayout = new HLineLayout(group.container,
                                                                0, 0,
                                                                group.width, -1,
                                                                LayoutAlign.CENTER);
