@@ -12,8 +12,11 @@ h3. How to use it.
 
 h3. Done
 
-* HorizontalLayout
-* VerticalLayout
+* HLineLayout
+* VLineLayout
 * AlignLayout
 
 h3. Todo
+
+* HBoxLayout
+* VBoxLayout
