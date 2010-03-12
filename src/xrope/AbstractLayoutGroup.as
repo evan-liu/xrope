@@ -1,10 +1,7 @@
 package xrope
 {
-
-
-
-
     import xrope.algorithms.ForwardAlgorithm;
+
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
     import flash.utils.Dictionary;
@@ -376,11 +373,33 @@ package xrope
             {
                 layoutElements();
             }
-            else
-            {
-                layoutContainer();
-            }
             isLayouted = true;
+            isChanged = false;
+        }
+        /**
+         * @inheritDoc
+         */
+        public function layoutContainer():void
+        {
+            const N:int = _container.numChildren;
+            if (N == 0)
+            {
+                return;
+            }
+            for (var i:int = 0;i < N;i++)
+            {
+                addAtom(_container.getChildAt(i));
+            }
+            layoutElements();
+        }
+        /**
+         * @inheritDoc
+         */
+        public function reset():void
+        {
+            _elements = [];
+            atomMap = new Dictionary();
+            isLayouted = false;
             isChanged = false;
         }
         //======================================================================
@@ -426,6 +445,10 @@ package xrope
             {
                 _container.addChild(element);
             }
+            if (atomMap[element])
+            {
+                return;
+            }
             var atom:AtomLayout = new AtomLayout(element);
             atomMap[element] = atom;
             _elements.push(atom);
@@ -446,19 +469,6 @@ package xrope
                 removeOne(atomMap[element]);
                 delete atomMap[element];
             }
-        }
-        protected function layoutContainer():void
-        {
-            const N:int = _container.numChildren;
-            if (N == 0)
-            {
-                return;
-            }
-            for (var i:int = 0;i < N;i++)
-            {
-                addAtom(_container.getChildAt(i));
-            }
-            layoutElements();
         }
         protected function layoutElements():void
         {
