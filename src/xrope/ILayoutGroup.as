@@ -100,6 +100,10 @@ package xrope
          */
         function layout():void;
         /**
+         * Layout all children in the container.
+         */
+        function layoutContainer():void;
+        /**
          * Reset to an empty group (Remove all elements).
          */
         function reset():void;
