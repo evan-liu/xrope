@@ -1,10 +1,7 @@
 package xrope
 {
-
-
-
-
     import xrope.algorithms.ForwardAlgorithm;
+
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
     import flash.utils.Dictionary;
@@ -381,6 +378,16 @@ package xrope
                 layoutContainer();
             }
             isLayouted = true;
+            isChanged = false;
+        }
+        /**
+         * @inheritDoc
+         */
+        public function reset():void
+        {
+            _elements = [];
+            atomMap = new Dictionary();
+            isLayouted = false;
             isChanged = false;
         }
         //======================================================================
