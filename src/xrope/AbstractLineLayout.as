@@ -4,6 +4,7 @@ package xrope
 
     import flash.display.DisplayObjectContainer;
     /**
+     * Abstract class for single line layout.
      * @author eidiot
      */
     public class AbstractLineLayout extends AbstractLayoutGroup
@@ -13,6 +14,9 @@ package xrope
         //======================================================================
         /**
          * Construct a <code>XLineLayout</code>.
+         * @param container             Container of the layout group.
+         * @param autoLayoutWhenAdd     If auto layout when a new element is added.
+         * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
         public function AbstractLineLayout(container:DisplayObjectContainer,
                                             autoLayoutWhenAdd:Boolean = false,
@@ -23,6 +27,7 @@ package xrope
         //======================================================================
         //  Overridden methods
         //======================================================================
+        /** @private */
         override protected function layoutElements():void
         {
             fixSize();
@@ -41,6 +46,7 @@ package xrope
         //======================================================================
         //  Protected methods
         //======================================================================
+        /** @private */
         protected function fixSize():void
         {
             if (_width <= 0)
@@ -52,24 +58,30 @@ package xrope
                 fixHeight();
             }
         }
+        /** @private */
         protected function fixWidth():void
         {
         }
+        /** @private */
         protected function fixHeight():void
         {
         }
+        /** @private */
         protected function getStartX():Number
         {
             return _x;
         }
+        /** @private */
         protected function getStartY():Number
         {
             return _y;
         }
+        /** @private */
         protected function getXAlgorithm():ILayoutAlgorithm
         {
             return new ForwardAlgorithm();
         }
+        /** @private */
         protected function getYAlgorithm():ILayoutAlgorithm
         {
             return new ForwardAlgorithm();

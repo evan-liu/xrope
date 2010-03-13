@@ -10,9 +10,7 @@ package xrope.algorithms
         //======================================================================
         //  Overridden methods
         //======================================================================
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         override public function calculate(currentElement:ILayoutElement,
                                   previousElement:ILayoutElement = null):Number
         {

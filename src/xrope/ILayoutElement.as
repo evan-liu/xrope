@@ -2,7 +2,6 @@ package xrope
 {
     /**
      * Interface for a layout element.
-     *
      * @author eidiot
      */
     public interface ILayoutElement
@@ -14,45 +13,37 @@ package xrope
         //  x
         //------------------------------
         /**
-         * X of the layout element.
+         * <code>x</code> value of the layout element.
          */
         function get x():Number;
-        /**
-         * @private
-         */
+        /** @private */
         function set x(value:Number):void;
         //------------------------------
         //  y
         //------------------------------
         /**
-         * Y of the layout element.
+         * <code>y</code> value of the layout element.
          */
         function get y():Number;
-        /**
-         * @private
-         */
+        /** @private */
         function set y(value:Number):void;
         //------------------------------
         //  width
         //------------------------------
         /**
-         * Width of the layout element.
+         * <code>width</code> of the layout element.
          */
         function get width():Number;
-        /**
-         * @private
-         */
+        /** @private */
         function set width(value:Number):void;
         //------------------------------
         //  height
         //------------------------------
         /**
-         * Height of the layout element.
+         * <code>height</code> value of the layout element.
          */
         function get height():Number;
-        /**
-         * @private
-         */
+        /** @private */
         function set height(value:Number):void;
     }
 }

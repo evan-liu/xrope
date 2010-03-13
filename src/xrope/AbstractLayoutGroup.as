@@ -4,6 +4,7 @@ package xrope
     import flash.display.DisplayObjectContainer;
     import flash.utils.Dictionary;
     /**
+     * Abstract class for layout group.
      * @author eidiot
      */
     public class AbstractLayoutGroup implements ILayoutGroup
@@ -12,7 +13,10 @@ package xrope
         //  Constructor
         //======================================================================
         /**
-         * Construct a <code>XLineLayout</code>.
+         * Construct a <code>AbstractLayoutGroup</code>.
+         * @param container             Container of the layout group.
+         * @param autoLayoutWhenAdd     If auto layout when a new element is added.
+         * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
         public function AbstractLayoutGroup(container:DisplayObjectContainer,
                                             autoLayoutWhenAdd:Boolean = false,
@@ -25,8 +29,11 @@ package xrope
         //======================================================================
         //  Protected methods
         //======================================================================
+        /** @private */
         protected var atomMap:Dictionary = new Dictionary();
+        /** @private */
         protected var isLayouted:Boolean = false;
+        /** @private */
         protected var isChanged:Boolean = false;
         //======================================================================
         //  Properties: IXLayoutGroup
@@ -34,10 +41,9 @@ package xrope
         //------------------------------
         //  container
         //------------------------------
+        /** @private */
         protected var _container:DisplayObjectContainer;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get container():DisplayObjectContainer
         {
             return _container;
@@ -45,10 +51,9 @@ package xrope
         //------------------------------
         //  elements
         //------------------------------
+        /** @private */
         protected var _elements:Array = [];
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get elements():Array
         {
             return _elements.concat();
@@ -56,17 +61,14 @@ package xrope
         //------------------------------
         //  x
         //------------------------------
+        /** @private */
         protected var _x:Number = 0;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get x():Number
         {
             return _x;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set x(value:Number):void
         {
             if (value == _x)
@@ -93,17 +95,14 @@ package xrope
         //------------------------------
         //  y
         //------------------------------
+        /** @private */
         protected var _y:Number = 0;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get y():Number
         {
             return _y;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set y(value:Number):void
         {
             if (value == _y)
@@ -130,17 +129,14 @@ package xrope
         //------------------------------
         //  width
         //------------------------------
+        /** @private */
         protected var _width:Number = 0;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get width():Number
         {
             return _width;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set width(value:Number):void
         {
             if (value == _width)
@@ -154,17 +150,14 @@ package xrope
         //------------------------------
         //  height
         //------------------------------
+        /** @private */
         protected var _height:Number;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get height():Number
         {
             return _height;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set height(value:Number):void
         {
             if (value == _height)
@@ -178,17 +171,14 @@ package xrope
         //------------------------------
         //  align
         //------------------------------
+        /** @private */
         protected var _align:String = "L";
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get align():String
         {
             return _align;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set align(value:String):void
         {
             if (value == _align)
@@ -202,17 +192,14 @@ package xrope
         //------------------------------
         //  horizontalGap
         //------------------------------
+        /** @private */
         protected var _horizontalGap:Number = 5;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get horizontalGap():Number
         {
             return _horizontalGap;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set horizontalGap(value:Number):void
         {
             if (value == _horizontalGap)
@@ -226,17 +213,14 @@ package xrope
         //------------------------------
         //  verticalGap
         //------------------------------
+        /** @private */
         protected var _verticalGap:Number = 5;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get verticalGap():Number
         {
             return _verticalGap;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set verticalGap(value:Number):void
         {
             if (value == _verticalGap)
@@ -250,17 +234,14 @@ package xrope
         //------------------------------
         //  autoLayoutWhenAdd
         //------------------------------
+        /** @private */
         protected var _autoLayoutWhenAdd:Boolean = false;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get autoLayoutWhenAdd():Boolean
         {
             return _autoLayoutWhenAdd;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set autoLayoutWhenAdd(value:Boolean):void
         {
             _autoLayoutWhenAdd = value;
@@ -268,17 +249,14 @@ package xrope
         //------------------------------
         //  autoLayoutWhenChange
         //------------------------------
+        /** @private */
         protected var _autoLayoutWhenChange:Boolean = false;
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get autoLayoutWhenChange():Boolean
         {
             return _autoLayoutWhenChange;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set autoLayoutWhenChange(value:Boolean):void
         {
             _autoLayoutWhenChange = value;
@@ -286,9 +264,7 @@ package xrope
         //======================================================================
         //  Public methods: IXLayoutGroup
         //======================================================================
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function add(...elements):void
         {
             while (elements.length == 1 && elements[0] is Array)
@@ -305,9 +281,7 @@ package xrope
                 layout();
             }
         }
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function remove(...elements):void
         {
             while (elements.length == 1 && elements[0] is Array)
@@ -324,9 +298,7 @@ package xrope
                 layout();
             }
         }
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function has(element:*):Boolean
         {
             if (_elements.length == 0)
@@ -343,9 +315,7 @@ package xrope
             }
             return false;
         }
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function layout():void
         {
             if (isLayouted && !isChanged)
@@ -359,9 +329,7 @@ package xrope
             isLayouted = true;
             isChanged = false;
         }
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function layoutContainer():void
         {
             reset();
@@ -376,9 +344,7 @@ package xrope
             }
             layoutElements();
         }
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function reset():void
         {
             _elements = [];
@@ -389,6 +355,7 @@ package xrope
         //======================================================================
         //  Protected methods
         //======================================================================
+        /** @private */
         protected function addOne(element:*):void
         {
             if (has(element))
@@ -404,6 +371,7 @@ package xrope
                 addAtom(element);
             }
         }
+        /** @private */
         protected function addAtom(element:DisplayObject):void
         {
             if (element.parent != _container)
@@ -418,6 +386,7 @@ package xrope
             atomMap[element] = atom;
             _elements.push(atom);
         }
+        /** @private */
         protected function removeOne(element:*):void
         {
             if (element is ILayoutElement)
@@ -435,6 +404,7 @@ package xrope
                 delete atomMap[element];
             }
         }
+        /** @private */
         protected function checkLayoutAfterChange():void
         {
             if (isLayouted && _autoLayoutWhenChange)
@@ -442,6 +412,7 @@ package xrope
                 layout();
             }
         }
+        /** @private */
         protected function layoutElements():void
         {
             // Tobe overridden by subclasses

@@ -1,8 +1,12 @@
 h2. Xrope: Simple layout library for native as3 display objects.
 
-xrope is a lightweight layout library for native as3 display objects. No need for any framework or dependence. It only has simple layout for games and mini-sites. no feature common used in applications like auto-resize is supported.
-
 "Examples":http://eidiot.github.com/xrope/
+
+h3. Features
+
+* For native as3 display objects. No Flex or any other dependency.
+* AtomLayout align DisplayObject using getBounds(). No worries about register point in FLA.
+* Easily composite layout elements/groups. No more DisplayObjectContainer needed. ("example":http://eidiot.github.com/xrope/index.html#FormExampleLink)
 
 h3. How to use it.
 
@@ -12,13 +16,13 @@ h3. How to use it.
 
 h3. Done
 
-* HLineLayout
-* VLineLayout
-* AlignLayout
-* HBoxLayout
-* VBoxLayout
-* HMultiLineLayout
-* VMultiLineLayout
+* HLineLayout - Horizontal single line layout. ("example":http://eidiot.github.com/xrope/index.html#HLineExampleLink)
+* VLineLayout - Vertical single line layout. ("example":http://eidiot.github.com/xrope/index.html#VLineExampleLink)
+* HMultiLineLayout - Horizontal multi-line layout. ("example":http://eidiot.github.com/xrope/index.html#HMultiLineExampleLink)
+* VMultiLineLayout - Vertical multi-line layout. ("example":http://eidiot.github.com/xrope/index.html#VMultiLineExampleLink)
+* HBoxLayout - Horizontal box layout. ("example":http://eidiot.github.com/xrope/index.html#HBoxExampleLink)
+* VBoxLayout - Vertical box layout.("example":http://eidiot.github.com/xrope/index.html#VBoxExampleLink)
+* AlignLayout - Align position group layout. ("example":http://eidiot.github.com/xrope/index.html#AlignExampleLink)
 
 h3. Todo
 

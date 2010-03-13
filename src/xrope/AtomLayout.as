@@ -1,12 +1,9 @@
 package xrope
 {
-    
-
     import flash.display.DisplayObject;
     import flash.geom.Rectangle;
     /**
      * Atom layout element for one DisplayObject.
-     *
      * @author eidiot
      */
     public class AtomLayout implements ILayoutElement
@@ -16,6 +13,7 @@ package xrope
         //======================================================================
         /**
          * Construct a <code>XAtomLayout</code>.
+         * @param target    Target display object.
          */
         public function AtomLayout(target:DisplayObject)
         {
@@ -32,9 +30,7 @@ package xrope
         //------------------------------
         //  x
         //------------------------------
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get x():Number
         {
             return _target.x + targetBounds.x * _target.scaleX;
@@ -46,13 +42,12 @@ package xrope
         //------------------------------
         //  y
         //------------------------------
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get y():Number
         {
             return _target.y + targetBounds.y * _target.scaleY;
         }
+        /** @private */
         public function set y(value:Number):void
         {
             _target.y = value - targetBounds.y * _target.scaleY;
@@ -60,13 +55,12 @@ package xrope
         //------------------------------
         //  width
         //------------------------------
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get width():Number
         {
             return _target.width;
         }
+        /** @private */
         public function set width(value:Number):void
         {
             _target.width = width;
@@ -74,13 +68,12 @@ package xrope
         //------------------------------
         //  height
         //------------------------------
-        /**
-         * @inheritDoc
-         */
+        /** @inheritDoc */
         public function get height():Number
         {
             return _target.height;
         }
+        /** @private */
         public function set height(value:Number):void
         {
             _target.height = height;

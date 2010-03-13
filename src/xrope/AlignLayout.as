@@ -11,6 +11,16 @@ package xrope
         //======================================================================
         //  Constructor
         //======================================================================
+        /**
+         * Construct a <code>AlignLayout</code>.
+         * @param container             Container of the layout group.
+         * @param x                     <code>x</code> value of the layout element.
+         * @param y                     <code>y</code> value of the layout element.
+         * @param width                 <code>width</code> value of the layout element.
+         * @param height                <code>height</code> value of the layout element.
+         * @param autoLayoutWhenAdd     If auto layout when a new element is added.
+         * @param autoLayoutWhenChange  If auto layout when something has been changed.
+         */
         public function AlignLayout(container:DisplayObjectContainer,
                                     x:Number = 0, y:Number = 0,
                                     width:Number = -1, height:Number = -1,
@@ -41,9 +51,7 @@ package xrope
         {
             return _defaultAlign;
         }
-        /**
-         * @private
-         */
+        /** @private */
         public function set defaultAlign(value:String):void
         {
             _defaultAlign = value;
@@ -51,6 +59,7 @@ package xrope
         //======================================================================
         //  Overridden methods
         //======================================================================
+        /** @private */
         override public function add(...elements):void
         {
             for each (var element:* in elements)
@@ -58,6 +67,7 @@ package xrope
                 addTo(element, _defaultAlign);
             }
         }
+        /** @private */
         override public function layout():void
         {
             for each (var alignGroup:ILayoutGroup in alignMap)
@@ -65,6 +75,7 @@ package xrope
                 alignGroup.layout();
             }
         }
+        /** @private */
         override public function layoutContainer():void
         {
             reset();
@@ -93,6 +104,8 @@ package xrope
         }
         /**
          * Set layout for a align position.
+         * @param align     Align position.
+         * @param layout    Layout group for the align postion.
          */
         public function setAlign(align:String, layout:ILayoutGroup):void
         {

@@ -3,7 +3,6 @@ package xrope
     import flash.display.DisplayObjectContainer;
     /**
      * Interface for layout groups.
-     *
      * @author eidiot
      */
     public interface ILayoutGroup extends ILayoutElement
@@ -22,41 +21,35 @@ package xrope
         //  elements
         //------------------------------
         /**
-         * All layout elements in the group.
+         * All layout elements in this group.
          */
         function get elements():Array;
         //------------------------------
         //  align
         //------------------------------
         /**
-         * Align of the layout group.
+         * Align of this layout group.
          */
         function get align():String;
-        /**
-         * @private
-         */
+        /** @private */
         function set align(value:String):void;
         //------------------------------
         //  horizontalGap
         //------------------------------
         /**
-         * Horizontal gap of the layout group.
+         * Horizontal gap of this layout group.
          */
         function get horizontalGap():Number;
-        /**
-         * @inheritDoc
-         */
+        /** @private */
         function set horizontalGap(value:Number):void;
         //------------------------------
         //  verticalGap
         //------------------------------
         /**
-         * Vertical gap of the layout group.
+         * Vertical gap of this layout group.
          */
         function get verticalGap():Number;
-        /**
-         * @inheritDoc
-         */
+        /** @private */
         function set verticalGap(value:Number):void;
         //------------------------------
         //  autoLayoutWhenAdd
@@ -65,9 +58,7 @@ package xrope
          * If auto layout when add a new element.
          */
         function get autoLayoutWhenAdd():Boolean;
-        /**
-         * @inheritDoc
-         */
+        /** @private */
         function set autoLayoutWhenAdd(value:Boolean):void;
         //------------------------------
         //  autoLayoutWhenChange
@@ -76,9 +67,7 @@ package xrope
          * If auto layout when changed.
          */
         function get autoLayoutWhenChange():Boolean;
-        /**
-         * @inheritDoc
-         */
+        /** @private */
         function set autoLayoutWhenChange(value:Boolean):void;
         //======================================================================
         //  Public methods

@@ -8,6 +8,7 @@ package xrope
 
     import flash.display.DisplayObjectContainer;
     /**
+     * Vertical single line layout.
      * @author eidiot
      */
     public class VLineLayout extends AbstractLineLayout
@@ -17,9 +18,15 @@ package xrope
         //======================================================================
         /**
          * Construct a <code>XLineLayout</code>.
-         * @param container     Container of the layout group.
-         * @param align         Align of the layout group.
-         * @param gap           Space of the layout elements in the group.
+         * @param container             Container of the layout group.
+         * @param x                     <code>x</code> value of the layout element.
+         * @param y                     <code>y</code> value of the layout element.
+         * @param width                 <code>width</code> value of the layout element.
+         * @param height                <code>height</code> value of the layout element.
+         * @param align                 Align of the layout group.
+         * @param gap                   Gap value of the line layout.
+         * @param autoLayoutWhenAdd     If auto layout when a new element is added.
+         * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
         public function VLineLayout(container:DisplayObjectContainer,
                                     x:Number = 0, y:Number = 0,
@@ -39,14 +46,17 @@ package xrope
         //======================================================================
         //  Overridden methods
         //======================================================================
+        /** @private */
         override protected function fixWidth():void
         {
             _width = getMaxWidth();
         }
+        /** @private */
         override protected function fixHeight():void
         {
             _height = getElementsAndGapsHeight();
         }
+        /** @private */
         override protected function getStartY():Number
         {
             switch (_align)
@@ -62,6 +72,7 @@ package xrope
             }
             return _y;
         }
+        /** @private */
         override protected function getXAlgorithm():ILayoutAlgorithm
         {
             switch (_align)
@@ -77,6 +88,7 @@ package xrope
             }
             return new CenterAlgorithm();
         }
+        /** @private */
         override protected function getYAlgorithm():ILayoutAlgorithm
         {
             switch (_align)

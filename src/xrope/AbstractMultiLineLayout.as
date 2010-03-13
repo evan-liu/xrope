@@ -2,14 +2,28 @@ package xrope
 {
     import flash.display.DisplayObjectContainer;
     /**
+     * Abstract class for multi-line layout (and box layout).
      * @author eidiot
      */
-    public class AbstractMultiLayoutGroup extends AbstractLayoutGroup implements IMultiLineLayout
+    public class AbstractMultiLineLayout extends AbstractLayoutGroup implements IMultiLineLayout
     {
         //======================================================================
         //  Constructor
         //======================================================================
-        public function AbstractMultiLayoutGroup(container:DisplayObjectContainer,
+        /**
+         * Construct a <code>AbstractMultiLineLayout</code>.
+         * @param container             Container of the layout group.
+         * @param width                 <code>width</code> value of the layout element.
+         * @param height                <code>height</code> value of the layout element.
+         * @param x                     <code>x</code> value of the layout element.
+         * @param y                     <code>y</code> value of the layout element.
+         * @param align                 Align of the layout group.
+         * @param horizontalGap         Horizontal gap value.
+         * @param verticalGap           Vertical gap value.
+         * @param autoLayoutWhenAdd     If auto layout when a new element is added.
+         * @param autoLayoutWhenChange  If auto layout when something has been changed.
+         */
+        public function AbstractMultiLineLayout(container:DisplayObjectContainer,
                                                  width:Number, height:Number,
                                                  x:Number = 0, y:Number = 0,
                                                  align:String = "TL",
@@ -26,7 +40,6 @@ package xrope
             _align = align;
             _horizontalGap = horizontalGap;
             _verticalGap = verticalGap;
-
         }
         //======================================================================
         //  Properties
@@ -34,11 +47,16 @@ package xrope
         //------------------------------
         //  lineAlign
         //------------------------------
+        /** @private */
         protected var _lineAlign:String = "TL";
+        /**
+         * align of each line.
+         */
         public function get lineAlign():String
         {
             return _lineAlign;
         }
+        /** @private */
         public function set lineAlign(value:String):void
         {
             if (value == _lineAlign)
@@ -52,6 +70,7 @@ package xrope
         //======================================================================
         //  Protected methods
         //======================================================================
+        /** @private */
         protected function layoutAsLines(valueKey:String, gap:Number):void
         {
             var currentValue:Number = 0;
@@ -85,11 +104,13 @@ package xrope
             }
             topLayout.layout();
         }
+        /** @private */
         protected function createLine():ILayoutGroup
         {
             // Tobe overridden by subclasses.
             return null;
         }
+        /** @private */
         protected function createTopLayout():ILayoutGroup
         {
             // Tobe overridden by subclasses.

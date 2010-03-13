@@ -2,13 +2,27 @@ package xrope
 {
     import flash.display.DisplayObjectContainer;
     /**
+     * Vertical box layout.
      * @author eidiot
      */
-    public class VBoxLayout extends AbstractMultiLayoutGroup
+    public class VBoxLayout extends AbstractMultiLineLayout
     {
         //======================================================================
         //  Constructor
         //======================================================================
+        /**
+         * Construct a <code>VBoxLayout</code>.
+         * @param container             Container of the layout group.
+         * @param width                 <code>width</code> value of the layout element.
+         * @param height                <code>height</code> value of the layout element.
+         * @param x                     <code>x</code> value of the layout element.
+         * @param y                     <code>y</code> value of the layout element.
+         * @param align                 Align of the layout group.
+         * @param horizontalGap         Horizontal gap value.
+         * @param verticalGap           Vertical gap value.
+         * @param autoLayoutWhenAdd     If auto layout when a new element is added.
+         * @param autoLayoutWhenChange  If auto layout when something has been changed.
+         */
         public function VBoxLayout(container:DisplayObjectContainer,
                                    width:Number, height:Number,
                                    x:Number = 0, y:Number = 0,
@@ -23,10 +37,12 @@ package xrope
         //======================================================================
         //  Overridden methods
         //======================================================================
+        /** @private */
         override protected function layoutElements():void
         {
             layoutAsLines("height", _verticalGap);
         }
+        /** @private */
         override protected function createLine():ILayoutGroup
         {
             var line:VLineLayout = new VLineLayout(_container);
@@ -34,6 +50,7 @@ package xrope
             line.verticalGap = _verticalGap;
             return line;
         }
+        /** @private */
         override protected function createTopLayout():ILayoutGroup
         {
             return new HLineLayout(_container, _x, _y, _width, _height, _align, _horizontalGap);
