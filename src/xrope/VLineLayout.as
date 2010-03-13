@@ -8,7 +8,7 @@ package xrope
     /**
      * @author eidiot
      */
-    public class VLineLayout extends AbstractLayoutGroup
+    public class VLineLayout extends AbstractLineLayout
     {
         //======================================================================
         //  Constructor

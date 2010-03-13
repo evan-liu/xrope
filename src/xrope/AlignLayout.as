@@ -6,7 +6,7 @@ package xrope
      * Composite layout use align positions.
      * @author eidiot
      */
-    public class AlignLayout extends AbstractLayoutGroup
+    public class AlignLayout extends AbstractLineLayout
     {
         //======================================================================
         //  Constructor
