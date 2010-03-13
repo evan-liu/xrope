@@ -10,6 +10,8 @@ package
     import flash.events.MouseEvent;
     import flash.text.TextField;
     import flash.utils.Dictionary;
+    
+    [SWF(width="400", height="400", backgroundColor="0xFFFFFF", frameRate="30")]
     /**
      * @author eidiot
      */

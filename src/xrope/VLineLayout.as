@@ -1,6 +1,8 @@
 package xrope
 {
+    import xrope.algorithms.BackwardAlgorithm;
     import xrope.algorithms.CenterAlgorithm;
+    import xrope.algorithms.ForwardAlgorithm;
     import xrope.algorithms.MaxAlgorithm;
     import xrope.algorithms.MinAlgorithm;
 
@@ -20,11 +22,11 @@ package xrope
          * @param gap           Space of the layout elements in the group.
          */
         public function VLineLayout(container:DisplayObjectContainer,
-                                        x:Number = 0, y:Number = 0,
-                                        width:Number = -1, height:Number = -1,
-                                        align:String = "TL", gap:Number = 5,
-                                        autoLayoutWhenAdd:Boolean = false,
-                                        autoLayoutWhenChange:Boolean = true)
+                                    x:Number = 0, y:Number = 0,
+                                    width:Number = -1, height:Number = -1,
+                                    align:String = "TL", gap:Number = 5,
+                                    autoLayoutWhenAdd:Boolean = false,
+                                    autoLayoutWhenChange:Boolean = true)
         {
             super(container, autoLayoutWhenAdd, autoLayoutWhenChange);
             _x = x;
@@ -52,7 +54,7 @@ package xrope
                 case LayoutAlign.BOTTOM:
                 case LayoutAlign.BOTTOM_LEFT:
                 case LayoutAlign.BOTTOM_RIGHT:
-                    return _y + _height - getElementsAndGapsHeight();
+                    return _y + _height;
                 case LayoutAlign.CENTER:
                 case LayoutAlign.LEFT:
                 case LayoutAlign.RIGHT:
@@ -74,6 +76,17 @@ package xrope
                     return new MaxAlgorithm();
             }
             return new CenterAlgorithm();
+        }
+        override protected function getYAlgorithm():ILayoutAlgorithm
+        {
+            switch (_align)
+            {
+                case LayoutAlign.BOTTOM:
+                case LayoutAlign.BOTTOM_LEFT:
+                case LayoutAlign.BOTTOM_RIGHT:
+                    return new BackwardAlgorithm();
+            }
+            return new ForwardAlgorithm();
         }
         //======================================================================
         //  Private methods

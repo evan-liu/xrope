@@ -6,7 +6,7 @@ package
     import flash.display.DisplayObject;
     import flash.display.Sprite;
     import flash.text.TextField;
-    [SWF(width="300", height="200", backgroundColor="0xFFFFFF", frameRate="30")]    
+    [SWF(width="300", height="200", backgroundColor="0xFFFFFF", frameRate="30")]
     /**
      * @author eidiot
      */
@@ -23,8 +23,8 @@ package
                                                     stage.stageHeight - MARGIN * 2);
             group.addTo(getLabel("Name"), LayoutAlign.TOP_LEFT);
             group.addTo(getLabel("Logo"), LayoutAlign.TOP_LEFT);
-            group.addTo(getLabel("Navigator 1"), LayoutAlign.TOP_RIGHT);
             group.addTo(getLabel("Navigator 2"), LayoutAlign.TOP_RIGHT);
+            group.addTo(getLabel("Navigator 1"), LayoutAlign.TOP_RIGHT);
             group.addTo(getLabel("Content"), LayoutAlign.CENTER);
             group.addTo(getLabel("Footer"), LayoutAlign.BOTTOM);
             group.addTo(getLabel("Copy Right"), LayoutAlign.BOTTOM_RIGHT);

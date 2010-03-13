@@ -16,7 +16,8 @@ h3. Done
 * VLineLayout
 * AlignLayout
 * HBoxLayout
+* VBoxLayout
 
 h3. Todo
 
-* VBoxLayout
+* More control for atom layout.
