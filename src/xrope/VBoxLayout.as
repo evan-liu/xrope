@@ -4,12 +4,12 @@ package xrope
     /**
      * @author eidiot
      */
-    public class HBoxLayout extends AbstractMultiLayoutGroup
+    public class VBoxLayout extends AbstractMultiLayoutGroup
     {
         //======================================================================
         //  Constructor
         //======================================================================
-        public function HBoxLayout(container:DisplayObjectContainer,
+        public function VBoxLayout(container:DisplayObjectContainer,
                                    width:Number, height:Number,
                                    x:Number = 0, y:Number = 0,
                                    align:String = "TL",
@@ -25,18 +25,18 @@ package xrope
         //======================================================================
         override protected function layoutElements():void
         {
-            layoutAsLines("width", _horizontalGap);
+            layoutAsLines("height", _verticalGap);
         }
         override protected function createLine():ILayoutGroup
         {
-            var line:HLineLayout = new HLineLayout(_container);
+            var line:VLineLayout = new VLineLayout(_container);
             line.align = _lineAlign;
-            line.horizontalGap = _horizontalGap;
+            line.verticalGap = _verticalGap;
             return line;
         }
         override protected function createTopLayout():ILayoutGroup
         {
-            return new VLineLayout(_container, _x, _y, _width, _height, _align, _verticalGap);
+            return new HLineLayout(_container, _x, _y, _width, _height, _align, _horizontalGap);
         }
     }
 }

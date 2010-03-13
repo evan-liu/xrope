@@ -1,9 +1,9 @@
 package
 {
-    import xrope.HBoxLayout;
     import xrope.HLineLayout;
     import xrope.ILayoutGroup;
     import xrope.LayoutAlign;
+    import xrope.VBoxLayout;
 
     import flash.display.Shape;
     import flash.display.Sprite;
@@ -13,12 +13,12 @@ package
     /**
      * @author eidiot
      */
-    public class HBoxExample extends Sprite
+    public class VBoxExample extends Sprite
     {
         //======================================================================
         //  Constructor
         //======================================================================
-        public function HBoxExample()
+        public function VBoxExample()
         {
             super();
             demo();
@@ -30,7 +30,7 @@ package
         private var boxAlignBySelector:Dictionary = new Dictionary();
         private var selectedLineAlign:Sprite;
         private var lineAlignBySelector:Dictionary = new Dictionary();
-        private var boxLayout:HBoxLayout;
+        private var boxLayout:VBoxLayout;
         //======================================================================
         //  Private methods
         //======================================================================
@@ -46,8 +46,8 @@ package
             const BOX_Y:Number = 50;
             const BOX_WIDTH:Number = stage.stageWidth - MARGIN * 2;
             const BOX_HEIGHT:Number = stage.stageHeight - BOX_Y - MARGIN;
-            boxLayout = new HBoxLayout(this, BOX_WIDTH, BOX_HEIGHT, MARGIN, BOX_Y);
-            for (var i:int = 0; i < 50; i++)
+            boxLayout = new VBoxLayout(this, BOX_WIDTH, BOX_HEIGHT, MARGIN, BOX_Y);
+            for (var i:int = 0; i < 40; i++)
             {
                 boxLayout.add(getShape());
             }
@@ -66,9 +66,9 @@ package
             alignLayout.add(createBoxAlignSelector(LayoutAlign.LEFT));
             alignLayout.add(createBoxAlignSelector(LayoutAlign.CENTER));
             alignLayout.add(createFiled("    Line Align:"));
-            alignLayout.add(createLineAlignSelector(LayoutAlign.TOP));
+            alignLayout.add(createLineAlignSelector(LayoutAlign.LEFT));
             alignLayout.add(createLineAlignSelector(LayoutAlign.CENTER));
-            alignLayout.add(createLineAlignSelector(LayoutAlign.BOTTOM));
+            alignLayout.add(createLineAlignSelector(LayoutAlign.RIGHT));
             alignLayout.layout();
         }
         private function createFiled(text:String):TextField
