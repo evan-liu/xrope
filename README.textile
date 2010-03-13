@@ -17,6 +17,8 @@ h3. Done
 * AlignLayout
 * HBoxLayout
 * VBoxLayout
+* HMultiLineLayout
+* VMultiLineLayout
 
 h3. Todo
 
