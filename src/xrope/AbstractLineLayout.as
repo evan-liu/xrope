@@ -8,7 +8,7 @@ package xrope
     /**
      * @author eidiot
      */
-    public class AbstractLayoutGroup implements ILayoutGroup
+    public class AbstractLineLayout implements ILayoutGroup
     {
         //======================================================================
         //  Constructor
@@ -16,7 +16,7 @@ package xrope
         /**
          * Construct a <code>XLineLayout</code>.
          */
-        public function AbstractLayoutGroup(container:DisplayObjectContainer,
+        public function AbstractLineLayout(container:DisplayObjectContainer,
                                             autoLayoutWhenAdd:Boolean = false,
                                             autoLayoutWhenChange:Boolean = true)
         {
@@ -381,6 +381,7 @@ package xrope
          */
         public function layoutContainer():void
         {
+            reset();
             const N:int = _container.numChildren;
             if (N == 0)
             {
