@@ -149,10 +149,7 @@ package xrope
             }
             _width = value;
             isChanged = true;
-            if (isLayouted && _autoLayoutWhenChange)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         //------------------------------
         //  height
@@ -176,10 +173,7 @@ package xrope
             }
             _height = value;
             isChanged = true;
-            if (isLayouted && _autoLayoutWhenChange)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         //------------------------------
         //  align
@@ -203,10 +197,7 @@ package xrope
             }
             _align = value;
             isChanged = true;
-            if (isLayouted && _autoLayoutWhenChange)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         //------------------------------
         //  horizontalGap
@@ -230,10 +221,7 @@ package xrope
             }
             _horizontalGap = value;
             isChanged = true;
-            if (isLayouted && _autoLayoutWhenChange)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         //------------------------------
         //  verticalGap
@@ -257,10 +245,7 @@ package xrope
             }
             _verticalGap = value;
             isChanged = true;
-            if (isLayouted && _autoLayoutWhenChange)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         //------------------------------
         //  autoLayoutWhenAdd
@@ -448,6 +433,13 @@ package xrope
             {
                 removeOne(atomMap[element]);
                 delete atomMap[element];
+            }
+        }
+        protected function checkLayoutAfterChange():void
+        {
+            if (isLayouted && _autoLayoutWhenChange)
+            {
+                layout();
             }
         }
         protected function layoutElements():void

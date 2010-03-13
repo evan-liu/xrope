@@ -47,10 +47,7 @@ package xrope
             }
             _lineAlign = value;
             isChanged = true;
-            if (isLayouted && _autoLayoutWhenChange)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         //======================================================================
         //  Protected methods
