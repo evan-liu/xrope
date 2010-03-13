@@ -37,6 +37,10 @@ package xrope
         //======================================================================
         //  Overridden methods
         //======================================================================
+        override protected function fixWidth():void
+        {
+            _width = getElementsAndGapsWidth();
+        }
         override protected function fixHeight():void
         {
             _height = getMaxHeight();
@@ -48,12 +52,11 @@ package xrope
                 case LayoutAlign.RIGHT:
                 case LayoutAlign.TOP_RIGHT:
                 case LayoutAlign.BOTTOM_RIGHT:
-                    return _x + _width - getTotalWidth();
+                    return _x + _width - getElementsAndGapsWidth();
                 case LayoutAlign.CENTER:
                 case LayoutAlign.TOP:
                 case LayoutAlign.BOTTOM:
-                    var totalGap:Number = _horizontalGap * (_elements.length- 1);
-                    return _x + (_width - getTotalWidth() - totalGap) / 2;
+                    return _x + (_width - getElementsAndGapsWidth()) / 2;
             }
             return _x;
         }
@@ -71,6 +74,38 @@ package xrope
                     return new MaxAlgorithm();
             }
             return new CenterAlgorithm();
+        }
+        //======================================================================
+        //  Private methods
+        //======================================================================
+        private function getMaxHeight():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                if (element.height > result)
+                {
+                    result = element.height;
+                }
+            }
+            return result;
+        }
+        private function getElementsWidth():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                result += element.width;
+            }
+            return result;
+        }
+        private function getGapsWidth():Number
+        {
+            return _horizontalGap * (_elements.length - 1);
+        }
+        private function getElementsAndGapsWidth():Number
+        {
+            return getElementsWidth() + getGapsWidth();
         }
     }
 }

@@ -6,7 +6,7 @@ package xrope
      * Composite layout use align positions.
      * @author eidiot
      */
-    public class AlignLayout extends AbstractLineLayout
+    public class AlignLayout extends AbstractLayoutGroup
     {
         //======================================================================
         //  Constructor
@@ -64,6 +64,20 @@ package xrope
             {
                 alignGroup.layout();
             }
+        }
+        override public function layoutContainer():void
+        {
+            reset();
+            const N:int = _container.numChildren;
+            if (N == 0)
+            {
+                return;
+            }
+            for (var i:int = 0;i < N;i++)
+            {
+                add(_container.getChildAt(i));
+            }
+            layout();
         }
         //======================================================================
         //  Public methods

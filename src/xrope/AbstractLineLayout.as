@@ -54,11 +54,9 @@ package xrope
         }
         protected function fixWidth():void
         {
-            _width = getTotalWidth() + _horizontalGap * (_elements.length - 1);
         }
         protected function fixHeight():void
         {
-            _height = getTotalHeight() + _verticalGap * (_elements.length - 1);
         }
         protected function getStartX():Number
         {
@@ -75,48 +73,6 @@ package xrope
         protected function getYAlgorithm():ILayoutAlgorithm
         {
             return new ForwardAlgorithm();
-        }
-        protected function getTotalWidth():Number
-        {
-            var result:Number = 0;
-            for each (var element:ILayoutElement in _elements)
-            {
-                result += element.width;
-            }
-            return result;
-        }
-        protected function getTotalHeight():Number
-        {
-            var result:Number = 0;
-            for each (var element:ILayoutElement in _elements)
-            {
-                result += element.height;
-            }
-            return result;
-        }
-        protected function getMaxWidth():Number
-        {
-            var result:Number = 0;
-            for each (var element:ILayoutElement in _elements)
-            {
-                if (element.width > result)
-                {
-                    result = element.width;
-                }
-            }
-            return result;
-        }
-        protected function getMaxHeight():Number
-        {
-            var result:Number = 0;
-            for each (var element:ILayoutElement in _elements)
-            {
-                if (element.height > result)
-                {
-                    result = element.height;
-                }
-            }
-            return result;
         }
     }
 }

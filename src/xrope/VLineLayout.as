@@ -41,6 +41,10 @@ package xrope
         {
             _width = getMaxWidth();
         }
+        override protected function fixHeight():void
+        {
+            _height = getElementsAndGapsHeight();
+        }
         override protected function getStartY():Number
         {
             switch (_align)
@@ -48,12 +52,11 @@ package xrope
                 case LayoutAlign.BOTTOM:
                 case LayoutAlign.BOTTOM_LEFT:
                 case LayoutAlign.BOTTOM_RIGHT:
-                    return _y + _height - getTotalHeight();
+                    return _y + _height - getElementsAndGapsHeight();
                 case LayoutAlign.CENTER:
                 case LayoutAlign.LEFT:
                 case LayoutAlign.RIGHT:
-                    var totalGap:Number = _verticalGap * (_elements.length - 1);
-                    return _y + (_height - getTotalHeight() - totalGap) / 2;
+                    return _y + (_height - getElementsAndGapsHeight()) / 2;
             }
             return _y;
         }
@@ -71,6 +74,38 @@ package xrope
                     return new MaxAlgorithm();
             }
             return new CenterAlgorithm();
+        }
+        //======================================================================
+        //  Private methods
+        //======================================================================
+        private function getElementsHeight():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                result += element.height;
+            }
+            return result;
+        }
+        private function getGapsHeight():Number
+        {
+            return _verticalGap * (_elements.length - 1);
+        }
+        private function getElementsAndGapsHeight():Number
+        {
+            return getElementsHeight() + getGapsHeight();
+        }
+        private function getMaxWidth():Number
+        {
+            var result:Number = 0;
+            for each (var element:ILayoutElement in _elements)
+            {
+                if (element.width > result)
+                {
+                    result = element.width;
+                }
+            }
+            return result;
         }
     }
 }
