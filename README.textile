@@ -8,13 +8,13 @@ h3. Features
 * AtomLayout align DisplayObject using getBounds(). No worries about register point in FLA.
 * Easily composite layout elements/groups. No more DisplayObjectContainer needed. ("example":http://eidiot.github.com/xrope/index.html#FormExampleLink)
 
-h3. How to use it.
+h3. How to use
 
 * Create a layout group which implements _ILayoutGroup_ and set layout properties.
 * Add some display objects or other _ILayoutElement_ to the group.
 * Call the _layout()_ method of the group.
 
-h3. Done
+h3. Layout groups ("AsDoc":http://eidiot.github.com/xrope/doc/index.html)
 
 * HLineLayout - Horizontal single line layout. ("example":http://eidiot.github.com/xrope/index.html#HLineExampleLink)
 * VLineLayout - Vertical single line layout. ("example":http://eidiot.github.com/xrope/index.html#VLineExampleLink)
@@ -23,9 +23,6 @@ h3. Done
 * HBoxLayout - Horizontal box layout. ("example":http://eidiot.github.com/xrope/index.html#HBoxExampleLink)
 * VBoxLayout - Vertical box layout.("example":http://eidiot.github.com/xrope/index.html#VBoxExampleLink)
 * AlignLayout - Align position group layout. ("example":http://eidiot.github.com/xrope/index.html#AlignExampleLink)
+* GridLayout - Grid layout. ("example":http://eidiot.github.com/xrope/index.html#GridExampleLink)
 
 *Note* difference between MultiLineLayout and BoxLayout: Lines in MultiLineLayout has the same height as the lineHeight property, while height of lines in HBoxLayout according to the max height of elements in each line.
-
-h3. Todo
-
-* More control for atom layout.
