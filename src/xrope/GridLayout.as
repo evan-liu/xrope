@@ -3,6 +3,7 @@ package xrope
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
     /**
+     * Grid layout.
      * @author eidiot
      */
     public class GridLayout extends AbstractMultiLineLayout
