@@ -382,9 +382,14 @@ package xrope
             {
                 return;
             }
-            var atom:AtomLayout = new AtomLayout(element);
+            var atom:ILayoutElement = createAtom(element);
             atomMap[element] = atom;
             _elements.push(atom);
+        }
+        /** @private */
+        protected function createAtom(element:DisplayObject):ILayoutElement
+        {
+            return new AtomLayout(element);
         }
         /** @private */
         protected function removeOne(element:*):void

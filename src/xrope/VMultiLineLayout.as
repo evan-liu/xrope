@@ -54,7 +54,13 @@ package xrope
         /** @private */
         public function set lineWidth(value:Number):void
         {
+            if (value == _lineWidth)
+            {
+                return;
+            }
             _lineWidth = value;
+            isChanged = true;
+            checkLayoutAfterChange();
         }
         //======================================================================
         //  Overridden methods
