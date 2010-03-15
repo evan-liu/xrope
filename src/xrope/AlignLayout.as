@@ -126,7 +126,7 @@ package xrope
             {
                 alignMap[align] = new HLineLayout(_container, _x, _y,
                                       _width, _height, align,
-                                      _horizontalGap, _autoLayoutWhenAdd,
+                                      _horizontalGap, _useBounds, _autoLayoutWhenAdd,
                                       _autoLayoutWhenChange);
             }
             return alignMap[align];
