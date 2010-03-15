@@ -13,12 +13,17 @@ package xrope
         //======================================================================
         /**
          * Construct a <code>XAtomLayout</code>.
-         * @param target    Target display object.
+         * @param target        Target display object.
+         * @param useBounds     If use <code>getBounds()</code> for layout.
          */
-        public function AtomLayout(target:DisplayObject)
+        public function AtomLayout(target:DisplayObject, useBounds:Boolean = false)
         {
             _target = target;
-            targetBounds = _target.getBounds(_target);
+            _useBounds = useBounds;
+            if (useBounds)
+            {
+                targetBounds = _target.getBounds(_target);
+            }
         }
         //======================================================================
         //  Variables
@@ -33,11 +38,18 @@ package xrope
         /** @inheritDoc */
         public function get x():Number
         {
-            return _target.x + targetBounds.x * _target.scaleX;
+            return _useBounds ? getXUseBounds() : _target.x;
         }
         public function set x(value:Number):void
         {
-            _target.x = value - targetBounds.x * _target.scaleX;
+            if (_useBounds)
+            {
+                setXUseBounds(value);
+            }
+            else
+            {
+                _target.x = value;
+            }
         }
         //------------------------------
         //  y
@@ -45,12 +57,19 @@ package xrope
         /** @inheritDoc */
         public function get y():Number
         {
-            return _target.y + targetBounds.y * _target.scaleY;
+            return _useBounds ? getYUseBounds() : _target.y;
         }
         /** @private */
         public function set y(value:Number):void
         {
-            _target.y = value - targetBounds.y * _target.scaleY;
+            if (_useBounds)
+            {
+                setYUseBounds(value);
+            }
+            else
+            {
+                _target.y = value;
+            }
         }
         //------------------------------
         //  width
@@ -78,6 +97,28 @@ package xrope
         {
             _target.height = height;
         }
+        //------------------------------
+        //  useBounds
+        //------------------------------
+        private var _useBounds:Boolean;
+        /** @inheritDoc */
+        public function get useBounds():Boolean
+        {
+            return _useBounds;
+        }
+        /** @private */
+        public function set useBounds(value:Boolean):void
+        {
+            if (value == _useBounds)
+            {
+                return;
+            }
+            var currentX:Number = x;
+            var currentY:Number = y;
+            _useBounds = value;
+            x = currentX;
+            y = currentY;
+        }
         //======================================================================
         //  Properties
         //======================================================================
@@ -91,6 +132,25 @@ package xrope
         public function get target():DisplayObject
         {
             return _target;
+        }
+        //======================================================================
+        //  Private methods
+        //======================================================================
+        private function getXUseBounds():Number
+        {
+            return _target.x + targetBounds.x * Math.abs(_target.scaleX);
+        }
+        private function setXUseBounds(value:Number):void
+        {
+            _target.x = value - targetBounds.x * Math.abs(_target.scaleX);
+        }
+        private function getYUseBounds():Number
+        {
+            return _target.y + targetBounds.y * Math.abs(_target.scaleY);
+        }
+        private function setYUseBounds(value:Number):void
+        {
+            _target.y = value - targetBounds.y * Math.abs(_target.scaleY);
         }
     }
 }

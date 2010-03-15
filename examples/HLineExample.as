@@ -40,7 +40,7 @@ package
             var topGroup:ILayoutGroup = new VLineLayout(this, 30, 0, stage.stageWidth - 30);
             for each (var align:String in ALIGN_LIST)
             {
-                topGroup.add(new HLineLayout(this, 0, 0, topGroup.width, 40, align));
+                topGroup.add(new HLineLayout(this, 0, 0, topGroup.width, 40, align, 5, true));
             }
             topGroup.layout();
             for each (var subGroup:ILayoutGroup in topGroup.elements)

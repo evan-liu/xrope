@@ -47,6 +47,7 @@ package
             const BOX_WIDTH:Number = stage.stageWidth - MARGIN * 2;
             const BOX_HEIGHT:Number = stage.stageHeight - BOX_Y - MARGIN;
             boxLayout = new HBoxLayout(this, BOX_WIDTH, BOX_HEIGHT, MARGIN, BOX_Y);
+            boxLayout.useBounds = true;
             for (var i:int = 0; i < 50; i++)
             {
                 boxLayout.add(getShape());

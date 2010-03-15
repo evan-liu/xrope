@@ -45,5 +45,14 @@ package xrope
         function get height():Number;
         /** @private */
         function set height(value:Number):void;
+        //------------------------------
+        //  useBounds
+        //------------------------------
+        /**
+         * If use <code>getBounds()</code> of <code>DisplayObject</code> for layout.
+         */
+        function get useBounds():Boolean;
+        /** @private */
+        function set useBounds(value:Boolean):void;
     }
 }

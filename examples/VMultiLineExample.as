@@ -50,6 +50,7 @@ package
             const BOX_HEIGHT:Number = stage.stageHeight - BOX_Y - MARGIN;
             const LINE_WIDTH:Number = 50;
             multiLineLayout = new VMultiLineLayout(this, BOX_WIDTH, BOX_HEIGHT, LINE_WIDTH, MARGIN, BOX_Y);
+            multiLineLayout.useBounds = true;
             for (var i:int = 0; i < 40; i++)
             {
                 multiLineLayout.add(getShape());

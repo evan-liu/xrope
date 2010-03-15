@@ -17,11 +17,13 @@ package xrope
          * @param width           <code>width</code> value of the layout element.
          * @param height          <code>height</code> value of the layout element.
          * @param align           Align of the tile.
+         * @param useBounds       If use <code>getBounds()</code> for atom.
          * @param x               <code>x</code> value of the layout element.
          * @param y               <code>y</code> value of the layout element.
          */
         public function TileLayout(targetOrAtom:*, width:Number, height:Number,
-                                   align:String = "TL", x:Number = 0, y:Number = 0)
+                                   align:String = "TL", useBounds:Boolean = false,
+                                   x:Number = 0, y:Number = 0)
         {
             if (targetOrAtom is AtomLayout)
             {
@@ -29,7 +31,7 @@ package xrope
             }
             else if (targetOrAtom is DisplayObject)
             {
-                _atom = new AtomLayout(targetOrAtom);
+                _atom = new AtomLayout(targetOrAtom, useBounds);
             }
             else
             {
@@ -121,6 +123,19 @@ package xrope
                 _height = value;
                 layout();
             }
+        }
+        //------------------------------
+        //  useBounds
+        //------------------------------
+        /** @inheritDoc */
+        public function get useBounds():Boolean
+        {
+            return _atom.useBounds;
+        }
+        /** @private */
+        public function set useBounds(value:Boolean):void
+        {
+            _atom.useBounds = value;
         }
         //======================================================================
         //  Properties

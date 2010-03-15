@@ -15,14 +15,16 @@ package xrope
         /**
          * Construct a <code>XLineLayout</code>.
          * @param container             Container of the layout group.
+         * @param useBounds             If use <code>getBounds()</code> for atom.
          * @param autoLayoutWhenAdd     If auto layout when a new element is added.
          * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
         public function AbstractLineLayout(container:DisplayObjectContainer,
+                                            useBounds:Boolean = false,
                                             autoLayoutWhenAdd:Boolean = false,
                                             autoLayoutWhenChange:Boolean = true)
         {
-            super(container, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
         }
         //======================================================================
         //  Overridden methods

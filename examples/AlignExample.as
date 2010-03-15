@@ -6,6 +6,7 @@ package
     import flash.display.DisplayObject;
     import flash.display.Sprite;
     import flash.text.TextField;
+
     [SWF(width="300", height="200", backgroundColor="0xFFFFFF", frameRate="30")]
     /**
      * @author eidiot
@@ -18,9 +19,10 @@ package
         public function AlignExample()
         {
             const MARGIN:int = 10;
-            var group:AlignLayout = new AlignLayout(this, MARGIN, MARGIN,
+            var group:AlignLayout = new AlignLayout(this,
                                                     stage.stageWidth - MARGIN * 2,
-                                                    stage.stageHeight - MARGIN * 2);
+                                                    stage.stageHeight - MARGIN * 2,
+                                                    MARGIN, MARGIN);
             group.addTo(getLabel("Name"), LayoutAlign.TOP_LEFT);
             group.addTo(getLabel("Logo"), LayoutAlign.TOP_LEFT);
             group.addTo(getLabel("Navigator 2"), LayoutAlign.TOP_RIGHT);

@@ -10,7 +10,7 @@ package
     import flash.events.MouseEvent;
     import flash.text.TextField;
     import flash.utils.Dictionary;
-    
+
     [SWF(width="400", height="400", backgroundColor="0xFFFFFF", frameRate="30")]
     /**
      * @author eidiot
@@ -49,6 +49,7 @@ package
             const BOX_WIDTH:Number = stage.stageWidth - MARGIN * 2;
             const BOX_HEIGHT:Number = stage.stageHeight - BOX_Y - MARGIN;
             boxLayout = new VBoxLayout(this, BOX_WIDTH, BOX_HEIGHT, MARGIN, BOX_Y);
+            boxLayout.useBounds = true;
             for (var i:int = 0; i < 40; i++)
             {
                 boxLayout.add(getShape());

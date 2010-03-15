@@ -15,14 +15,17 @@ package xrope
         /**
          * Construct a <code>AbstractLayoutGroup</code>.
          * @param container             Container of the layout group.
+         * @param useBounds             If use <code>getBounds()</code> for atom.
          * @param autoLayoutWhenAdd     If auto layout when a new element is added.
          * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
         public function AbstractLayoutGroup(container:DisplayObjectContainer,
+                                            useBounds:Boolean = false,
                                             autoLayoutWhenAdd:Boolean = false,
                                             autoLayoutWhenChange:Boolean = true)
         {
             _container = container;
+            _useBounds = useBounds;
             _autoLayoutWhenAdd = autoLayoutWhenAdd;
             _autoLayoutWhenChange = autoLayoutWhenChange;
         }
@@ -167,6 +170,29 @@ package xrope
             _height = value;
             isChanged = true;
             checkLayoutAfterChange();
+        }
+        //------------------------------
+        //  useBounds
+        //------------------------------
+        /** @private */
+        protected var _useBounds:Boolean = false;
+        /** @inheritDoc */
+        public function get useBounds():Boolean
+        {
+            return _useBounds;
+        }
+        /** @private */
+        public function set useBounds(value:Boolean):void
+        {
+            if (value == _useBounds)
+            {
+                return;
+            }
+            _useBounds = value;
+            for each (var element:ILayoutElement in _elements)
+            {
+                element.useBounds = _useBounds;
+            }
         }
         //------------------------------
         //  align
@@ -389,7 +415,7 @@ package xrope
         /** @private */
         protected function createAtom(element:DisplayObject):ILayoutElement
         {
-            return new AtomLayout(element);
+            return new AtomLayout(element, _useBounds);
         }
         /** @private */
         protected function removeOne(element:*):void

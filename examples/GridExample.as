@@ -51,6 +51,7 @@ package
             const TILE_WIDTH:Number = 50;
             const TILE_HEIGHT:Number = 50;
             gridLayout = new GridLayout(this, BOX_WIDTH, BOX_HEIGHT, TILE_WIDTH, TILE_HEIGHT, MARGIN, BOX_Y);
+            gridLayout.useBounds = true;
             for (var i:int = 0; i < 30; i++)
             {
                 gridLayout.add(getShape());

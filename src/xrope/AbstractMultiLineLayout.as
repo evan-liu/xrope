@@ -20,6 +20,7 @@ package xrope
          * @param align                 Align of the layout group.
          * @param horizontalGap         Horizontal gap value.
          * @param verticalGap           Vertical gap value.
+         * @param useBounds             If use <code>getBounds()</code> for atom.
          * @param autoLayoutWhenAdd     If auto layout when a new element is added.
          * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
@@ -29,10 +30,11 @@ package xrope
                                                  align:String = "TL",
                                                  horizontalGap:Number = 5,
                                                  verticalGap:Number = 5,
+                                                 useBounds:Boolean = false,
                                                  autoLayoutWhenAdd:Boolean = false,
                                                  autoLayoutWhenChange:Boolean = true)
         {
-            super(container, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
             _width = width;
             _height = height;
             _x = x;

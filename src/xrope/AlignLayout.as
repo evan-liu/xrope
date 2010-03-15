@@ -14,20 +14,22 @@ package xrope
         /**
          * Construct a <code>AlignLayout</code>.
          * @param container             Container of the layout group.
-         * @param x                     <code>x</code> value of the layout element.
-         * @param y                     <code>y</code> value of the layout element.
          * @param width                 <code>width</code> value of the layout element.
          * @param height                <code>height</code> value of the layout element.
+         * @param x                     <code>x</code> value of the layout element.
+         * @param y                     <code>y</code> value of the layout element.
+         * @param useBounds             If use <code>getBounds()</code> for atom.
          * @param autoLayoutWhenAdd     If auto layout when a new element is added.
          * @param autoLayoutWhenChange  If auto layout when something has been changed.
          */
         public function AlignLayout(container:DisplayObjectContainer,
+                                    width:Number, height:Number,
                                     x:Number = 0, y:Number = 0,
-                                    width:Number = -1, height:Number = -1,
+                                    useBounds:Boolean = false,
                                     autoLayoutWhenAdd:Boolean = false,
                                     autoLayoutWhenChange:Boolean = true)
         {
-            super(container, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
             _x = x;
             _y = y;
             _width = width;
