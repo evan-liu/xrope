@@ -369,6 +369,8 @@ package xrope
                 addAtom(_container.getChildAt(i));
             }
             layoutElements();
+            isLayouted = true;
+            isChanged = false;
         }
         /** @inheritDoc */
         public function reset():void
