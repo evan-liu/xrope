@@ -81,6 +81,10 @@ package xrope
          */
         function remove(...elements):void;
         /**
+         * Remove all elements.
+         */
+        function removeAll():void;
+        /**
          * Check if an element is in the group.
          */
         function has(element:*):Boolean;
@@ -93,7 +97,7 @@ package xrope
          */
         function layoutContainer():void;
         /**
-         * Reset to an empty group (Remove all elements).
+         * Remove all elements and reset all property to default value.
          */
         function reset():void;
     }

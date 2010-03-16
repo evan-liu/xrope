@@ -71,11 +71,12 @@ package xrope
         /** @private */
         public function set lineAlign(value:String):void
         {
-            if (value == _lineAlign)
+            var newAlign:String = fixLineAlign(value);
+            if (newAlign == _lineAlign)
             {
                 return;
             }
-            _lineAlign = value;
+            _lineAlign = newAlign;
             isChanged = true;
             checkLayoutAfterChange();
         }
@@ -128,6 +129,11 @@ package xrope
         {
             // Tobe overridden by subclasses.
             return null;
+        }
+        /** @private */
+        protected function fixLineAlign(value:String):String
+        {
+            return value;
         }
     }
 }

@@ -60,5 +60,24 @@ package xrope
         {
             return new VLineLayout(_container, _x, _y, _width, _height, _align, _verticalGap);
         }
+        /** @private */
+        override protected function fixLineAlign(value:String):String
+        {
+            switch (value)
+            {
+                case LayoutAlign.BOTTOM_LEFT:
+                case LayoutAlign.BOTTOM_RIGHT:
+                    return LayoutAlign.BOTTOM;
+                case LayoutAlign.LEFT:
+                case LayoutAlign.RIGHT:
+                    return LayoutAlign.CENTER;
+                case LayoutAlign.TOP_LEFT:
+                case LayoutAlign.TOP_RIGHT:
+                    return LayoutAlign.TOP;
+                default:
+                    return value;
+            }
+            return value;
+        }
     }
 }

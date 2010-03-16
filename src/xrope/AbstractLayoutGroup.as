@@ -154,7 +154,7 @@ package xrope
         //  height
         //------------------------------
         /** @private */
-        protected var _height:Number;
+        protected var _height:Number = 0;
         /** @inheritDoc */
         public function get height():Number
         {
@@ -198,7 +198,7 @@ package xrope
         //  align
         //------------------------------
         /** @private */
-        protected var _align:String = "L";
+        protected var _align:String = "TL";
         /** @inheritDoc */
         public function get align():String
         {
@@ -325,6 +325,14 @@ package xrope
             }
         }
         /** @inheritDoc */
+        public function removeAll():void
+        {
+            _elements = [];
+            atomMap = new Dictionary();
+            isLayouted = false;
+            isChanged = false;
+        }
+        /** @inheritDoc */
         public function has(element:*):Boolean
         {
             if (_elements.length == 0)
@@ -358,7 +366,7 @@ package xrope
         /** @inheritDoc */
         public function layoutContainer():void
         {
-            reset();
+            removeAll();
             const N:int = _container.numChildren;
             if (N == 0)
             {
@@ -375,10 +383,15 @@ package xrope
         /** @inheritDoc */
         public function reset():void
         {
-            _elements = [];
-            atomMap = new Dictionary();
-            isLayouted = false;
-            isChanged = false;
+            removeAll();
+            _x = 0;
+            _y = 0;
+            _width = 0;
+            _height = 0;
+            _align = "TL";
+            _useBounds = false;
+            _horizontalGap = 5;
+            _verticalGap = 5;
         }
         //======================================================================
         //  Protected methods

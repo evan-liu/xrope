@@ -60,5 +60,24 @@ package xrope
         {
             return new HLineLayout(_container, _x, _y, _width, _height, _align, _horizontalGap);
         }
+        /** @private */
+        override protected function fixLineAlign(value:String):String
+        {
+            switch (value)
+            {
+                case LayoutAlign.TOP_LEFT:
+                case LayoutAlign.BOTTOM_LEFT:
+                    return LayoutAlign.LEFT;
+                case LayoutAlign.TOP:
+                case LayoutAlign.BOTTOM:
+                    return LayoutAlign.CENTER;
+                case LayoutAlign.TOP_RIGHT:
+                case LayoutAlign.BOTTOM_RIGHT:
+                    return LayoutAlign.RIGHT;
+                default:
+                    return value;
+            }
+            return value;
+        }
     }
 }
