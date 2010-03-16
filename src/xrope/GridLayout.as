@@ -143,10 +143,12 @@ package xrope
             layoutAsLines("width", _horizontalGap);
         }
         /** @private */
-        override protected function createLine():ILayoutGroup
+        override protected function createLine(oldLines:Array):ILayoutGroup
         {
-            var line:HLineLayout = new HLineLayout(_container);
-            line.align = _lineAlign;
+            var line:HLineLayout = oldLines.length > 0 ?
+                                   HLineLayout(oldLines.pop()) :
+                                   new HLineLayout(_container);
+            line.reset();
             line.horizontalGap = _horizontalGap;
             return line;
         }

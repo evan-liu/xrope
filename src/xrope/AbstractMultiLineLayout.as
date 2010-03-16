@@ -47,6 +47,16 @@ package xrope
         //  Properties
         //======================================================================
         //------------------------------
+        //  lines
+        //------------------------------
+        /** @private */
+        protected var _lines:Array = [];
+        /** @inheritDoc */
+        public function get lines():Array
+        {
+            return _lines.concat();
+        }
+        //------------------------------
         //  lineAlign
         //------------------------------
         /** @private */
@@ -76,8 +86,9 @@ package xrope
         protected function layoutAsLines(valueKey:String, gap:Number):void
         {
             var currentValue:Number = 0;
-            var currentLine:ILayoutGroup = createLine();
-            var lineList:Array = [currentLine];
+            var oldLines:Array = _lines;
+            var currentLine:ILayoutGroup = createLine(oldLines);
+            _lines = [currentLine];
             for each (var element:ILayoutElement in _elements)
             {
                 var addValue:Number = element[valueKey];
@@ -88,8 +99,8 @@ package xrope
                 var newValue:Number = currentValue + addValue;
                 if (newValue > this[valueKey])
                 {
-                    currentLine = createLine();
-                    lineList.push(currentLine);
+                    currentLine = createLine(oldLines);
+                    _lines.push(currentLine);
                     currentValue = element[valueKey];
                 }
                 else
@@ -99,7 +110,7 @@ package xrope
                 currentLine.add(element);
             }
             var topLayout:ILayoutGroup = createTopLayout();
-            for each (var line:ILayoutGroup in lineList)
+            for each (var line:ILayoutGroup in _lines)
             {
                 line.layout();
                 topLayout.add(line);
@@ -107,7 +118,7 @@ package xrope
             topLayout.layout();
         }
         /** @private */
-        protected function createLine():ILayoutGroup
+        protected function createLine(oldLines:Array):ILayoutGroup
         {
             // Tobe overridden by subclasses.
             return null;

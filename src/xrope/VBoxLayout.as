@@ -45,9 +45,12 @@ package xrope
             layoutAsLines("height", _verticalGap);
         }
         /** @private */
-        override protected function createLine():ILayoutGroup
+        override protected function createLine(oldLines:Array):ILayoutGroup
         {
-            var line:VLineLayout = new VLineLayout(_container);
+            var line:VLineLayout = oldLines.length > 0 ?
+                                   VLineLayout(oldLines.pop()) :
+                                   new VLineLayout(_container);
+            line.reset();
             line.align = _lineAlign;
             line.verticalGap = _verticalGap;
             return line;
