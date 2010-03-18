@@ -113,6 +113,10 @@ package xrope
             {
                 return;
             }
+            if (value && !targetBounds)
+            {
+                targetBounds = _target.getBounds(_target);
+            }
             var currentX:Number = x;
             var currentY:Number = y;
             _useBounds = value;
