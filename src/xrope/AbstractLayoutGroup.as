@@ -302,10 +302,7 @@ package xrope
                 addOne(element);
             }
             isChanged = true;
-            if (_autoLayoutWhenAdd)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         /** @inheritDoc */
         public function remove(...elements):void
@@ -319,10 +316,7 @@ package xrope
                 removeOne(element);
             }
             isChanged = true;
-            if (_autoLayoutWhenAdd)
-            {
-                layout();
-            }
+            checkLayoutAfterChange();
         }
         /** @inheritDoc */
         public function removeAll():void
@@ -352,10 +346,6 @@ package xrope
         /** @inheritDoc */
         public function layout():void
         {
-            if (isLayouted && !isChanged)
-            {
-                return;
-            }
             if (_elements.length > 0)
             {
                 layoutElements();
