@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <project name="xrope" basedir="." default="compile">
-	<property file="build.properties"/>
-	<target name="compile">
-		<exec executable="${compc.exe}" dir="${basedir}">
-			<arg line="-include-sources 'src/xrope'"/>
-			<arg line="-output 'bin/xrope.swc'"/>
-		</exec>
-	</target>
+    <property file="build.properties"/>
+    <target name="compile">
+        <exec executable="${compc.exe}" dir="${basedir}">
+            <arg line="-include-sources 'src/xrope'"/>
+            <arg line="-output 'bin/${project.name.versioned}.swc'"/>
+        </exec>
+    </target>
 </project>
