@@ -40,6 +40,33 @@ package xrope
         //======================================================================
         private var alignMap:Dictionary = new Dictionary();
         //======================================================================
+        //  Overridden properties
+        //======================================================================
+        override public function set width(value:Number):void
+        {
+            if (value == _width)
+            {
+                return;
+            }
+            _width = value;
+            for each (var element:ILayoutElement in alignMap)
+            {
+                element.width = _width;
+            }
+        }
+        override public function set height(value:Number):void
+        {
+            if (value == _height)
+            {
+                return;
+            }
+            _height = value;
+            for each (var element:ILayoutElement in alignMap)
+            {
+                element.height = _height;
+            }
+        }
+        //======================================================================
         //  Properties
         //======================================================================
         //------------------------------
