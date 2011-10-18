@@ -285,8 +285,14 @@ package xrope
         /** @inheritDoc */
         public function removeAll():void
         {
-            _elements = new Vector.<ILayoutElement>();
+            for (var displayObject:* in atomLayoutsByDisplayObject)
+            {
+                removeDisplayObject(displayObject);
+            }
             atomLayoutsByDisplayObject = new Dictionary();
+
+            _elements = new Vector.<ILayoutElement>();
+
             isLayouted = false;
         }
         /** @inheritDoc */
@@ -395,10 +401,22 @@ package xrope
                 }
                 return;
             }
-            if (target is DisplayObject && atomLayoutsByDisplayObject[target])
+            if (target is DisplayObject)
             {
-                removeOne(atomLayoutsByDisplayObject[target]);
-                delete atomLayoutsByDisplayObject[target];
+                removeDisplayObject(target);
+                if (atomLayoutsByDisplayObject[target])
+                {
+                    removeOne(atomLayoutsByDisplayObject[target]);
+                    delete atomLayoutsByDisplayObject[target];
+                }
+            }
+        }
+        /** @private */
+        protected function removeDisplayObject(target:DisplayObject):void
+        {
+            if (target.parent == _container)
+            {
+                _container.removeChild(target);
             }
         }
         /** @private */
