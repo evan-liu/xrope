@@ -49,9 +49,9 @@ package xrope
         //  lines
         //------------------------------
         /** @private */
-        protected var _lines:Array = [];
+        protected var _lines:Vector.<ILayoutGroup> = new Vector.<ILayoutGroup>();
         /** @inheritDoc */
-        public function get lines():Array
+        public function get lines():Vector.<ILayoutGroup>
         {
             return _lines.concat();
         }
@@ -85,9 +85,9 @@ package xrope
         protected function layoutAsLines(valueKey:String, gap:Number):void
         {
             var currentValue:Number = 0;
-            var oldLines:Array = _lines;
+            var oldLines:Vector.<ILayoutGroup> = _lines;
             var currentLine:ILayoutGroup = createLine(oldLines);
-            _lines = [currentLine];
+            _lines = Vector.<ILayoutGroup>([currentLine]);
             for each (var element:ILayoutElement in _elements)
             {
                 var addValue:Number = element[valueKey];
@@ -117,7 +117,7 @@ package xrope
             topLayout.layout();
         }
         /** @private */
-        protected function createLine(oldLines:Array):ILayoutGroup
+        protected function createLine(oldLines:Vector.<ILayoutGroup>):ILayoutGroup
         {
             // Tobe overridden by subclasses.
             return null;

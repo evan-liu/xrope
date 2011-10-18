@@ -9,7 +9,7 @@ package xrope
         /**
          * Line list in the layout.
          */
-        function get lines():Array;
+        function get lines():Vector.<ILayoutGroup>;
         /**
          * Align of each line.
          */

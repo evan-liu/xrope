@@ -71,7 +71,7 @@ package xrope
             layoutAsLines("height", _verticalGap);
         }
         /** @private */
-        override protected function createLine(oldLines:Array):ILayoutGroup
+        override protected function createLine(oldLines:Vector.<ILayoutGroup>):ILayoutGroup
         {
             var line:VLineLayout = oldLines.length > 0 ?
                                    VLineLayout(oldLines.pop()) :

@@ -51,9 +51,9 @@ package xrope
         //  elements
         //------------------------------
         /** @private */
-        protected var _elements:Array = [];
+        protected var _elements:Vector.<ILayoutElement> = new Vector.<ILayoutElement>();
         /** @inheritDoc */
-        public function get elements():Array
+        public function get elements():Vector.<ILayoutElement>
         {
             return _elements.concat();
         }
@@ -253,39 +253,39 @@ package xrope
         //  Public methods: IXLayoutGroup
         //======================================================================
         /** @inheritDoc */
-        public function add(...elements):void
+        public function add(...targets):void
         {
-            while (elements.length == 1 && elements[0] is Array)
+            while (targets.length == 1 && targets[0] is Array)
             {
-                elements = elements[0];
+                targets = targets[0];
             }
-            if (elements.length == 0)
+            if (targets.length == 0)
             {
                 return;
             }
-            for each (var element:* in elements)
+            for each (var target:* in targets)
             {
-                addOne(element);
+                addOne(target);
             }
             checkLayoutAfterChange();
         }
         /** @inheritDoc */
-        public function remove(...elements):void
+        public function remove(...targets):void
         {
-            while (elements.length == 1 && elements[0] is Array)
+            while (targets.length == 1 && targets[0] is Array)
             {
-                elements = elements[0];
+                targets = targets[0];
             }
-            for each (var element:* in elements)
+            for each (var target:* in targets)
             {
-                removeOne(element);
+                removeOne(target);
             }
             checkLayoutAfterChange();
         }
         /** @inheritDoc */
         public function removeAll():void
         {
-            _elements = [];
+            _elements = new Vector.<ILayoutElement>();
             atomMap = new Dictionary();
             isLayouted = false;
         }
@@ -348,57 +348,57 @@ package xrope
         //  Protected methods
         //======================================================================
         /** @private */
-        protected function addOne(element:*):void
+        protected function addOne(target:*):void
         {
-            if (has(element))
+            if (has(target))
             {
                 return;
             }
-            if (element is ILayoutElement)
+            if (target is ILayoutElement)
             {
-                _elements.push(element);
+                _elements.push(target);
             }
-            else if (element is DisplayObject)
+            else if (target is DisplayObject)
             {
-                addAtom(element);
+                addAtom(target);
             }
         }
         /** @private */
-        protected function addAtom(element:DisplayObject):void
+        protected function addAtom(target:DisplayObject):void
         {
-            if (element.parent != _container)
+            if (target.parent != _container)
             {
-                _container.addChild(element);
+                _container.addChild(target);
             }
-            if (atomMap[element])
+            if (atomMap[target])
             {
                 return;
             }
-            var atom:ILayoutElement = createAtom(element);
-            atomMap[element] = atom;
+            var atom:ILayoutElement = createAtom(target);
+            atomMap[target] = atom;
             _elements.push(atom);
         }
         /** @private */
-        protected function createAtom(element:DisplayObject):ILayoutElement
+        protected function createAtom(target:DisplayObject):ILayoutElement
         {
-            return new AtomLayout(element, _useBounds);
+            return new AtomLayout(target, _useBounds);
         }
         /** @private */
-        protected function removeOne(element:*):void
+        protected function removeOne(target:*):void
         {
-            if (element is ILayoutElement)
+            if (target is ILayoutElement)
             {
-                var index:int = _elements.indexOf(element);
+                var index:int = _elements.indexOf(target);
                 if (index != -1)
                 {
                     _elements.splice(index, 1);
                 }
                 return;
             }
-            if (element is DisplayObject && atomMap[element])
+            if (target is DisplayObject && atomMap[target])
             {
-                removeOne(atomMap[element]);
-                delete atomMap[element];
+                removeOne(atomMap[target]);
+                delete atomMap[target];
             }
         }
         /** @private */

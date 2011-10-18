@@ -23,7 +23,7 @@ package xrope
         /**
          * All layout elements in this group.
          */
-        function get elements():Array;
+        function get elements():Vector.<ILayoutElement>;
         //------------------------------
         //  align
         //------------------------------
@@ -66,11 +66,11 @@ package xrope
         /**
          * Add elements to the group.
          */
-        function add(...elements):void;
+        function add(...targets):void;
         /**
          * Remove elements from the group.
          */
-        function remove(...elements):void;
+        function remove(...targets):void;
         /**
          * Remove all elements.
          */

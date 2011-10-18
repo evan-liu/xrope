@@ -88,11 +88,11 @@ package xrope
         //  Overridden methods
         //======================================================================
         /** @private */
-        override public function add(...elements):void
+        override public function add(...targets):void
         {
-            for each (var element:* in elements)
+            for each (var target:* in targets)
             {
-                addTo(element, _defaultAlign);
+                addTo(target, _defaultAlign);
             }
         }
         /** @private */
