@@ -34,10 +34,9 @@ package xrope
                                     width:Number = -1, height:Number = -1,
                                     align:String = "TL", gap:Number = 5,
                                     useBounds:Boolean = false,
-                                    autoLayoutWhenAdd:Boolean = false,
                                     autoLayoutWhenChange:Boolean = true)
         {
-            super(container, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, useBounds, autoLayoutWhenChange);
             _x = x;
             _y = y;
             _width = width;

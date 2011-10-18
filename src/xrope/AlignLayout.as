@@ -26,10 +26,9 @@ package xrope
                                     width:Number, height:Number,
                                     x:Number = 0, y:Number = 0,
                                     useBounds:Boolean = false,
-                                    autoLayoutWhenAdd:Boolean = false,
                                     autoLayoutWhenChange:Boolean = true)
         {
-            super(container, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, useBounds, autoLayoutWhenChange);
             _x = x;
             _y = y;
             _width = width;
@@ -153,7 +152,7 @@ package xrope
             {
                 alignMap[align] = new HLineLayout(_container, _x, _y,
                                       _width, _height, align,
-                                      _horizontalGap, _useBounds, _autoLayoutWhenAdd,
+                                      _horizontalGap, _useBounds,
                                       _autoLayoutWhenChange);
             }
             return alignMap[align];

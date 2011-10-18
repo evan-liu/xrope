@@ -33,10 +33,9 @@ package xrope
                                            horizontalGap:Number = 5,
                                            verticalGap:Number = 5,
                                            useBounds:Boolean = false,
-                                           autoLayoutWhenAdd:Boolean = false,
                                            autoLayoutWhenChange:Boolean = true)
         {
-            super(container, width, height, x, y, align, horizontalGap, verticalGap, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, width, height, x, y, align, horizontalGap, verticalGap, useBounds, autoLayoutWhenChange);
             _lineHeight = lineHeight;
         }
         //======================================================================
@@ -61,7 +60,6 @@ package xrope
                 return;
             }
             _lineHeight = value;
-            isChanged = true;
             checkLayoutAfterChange();
         }
         //======================================================================

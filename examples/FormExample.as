@@ -35,9 +35,8 @@ package
             addLine(topGroup, getLabel("Mail:", 40), getInput());
             addLine(topGroup, getLabel("Site:", 40), getInput());
             addLine(topGroup, getInput(300, 150));
-            topGroup.layout();
-            topGroup.autoLayoutWhenAdd = true;
             addLine(topGroup, getButton("Commit"), getButton("Discard"));
+            topGroup.layout();
         }
         private function getLabel(text:String, w:Number = -1):DisplayObject
         {

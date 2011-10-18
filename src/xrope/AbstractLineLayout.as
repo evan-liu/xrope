@@ -21,10 +21,9 @@ package xrope
          */
         public function AbstractLineLayout(container:DisplayObjectContainer,
                                             useBounds:Boolean = false,
-                                            autoLayoutWhenAdd:Boolean = false,
                                             autoLayoutWhenChange:Boolean = true)
         {
-            super(container, useBounds, autoLayoutWhenAdd, autoLayoutWhenChange);
+            super(container, useBounds, autoLayoutWhenChange);
         }
         //======================================================================
         //  Overridden methods

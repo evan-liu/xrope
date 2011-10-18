@@ -52,15 +52,6 @@ package xrope
         /** @private */
         function set verticalGap(value:Number):void;
         //------------------------------
-        //  autoLayoutWhenAdd
-        //------------------------------
-        /**
-         * If auto layout when add a new element.
-         */
-        function get autoLayoutWhenAdd():Boolean;
-        /** @private */
-        function set autoLayoutWhenAdd(value:Boolean):void;
-        //------------------------------
         //  autoLayoutWhenChange
         //------------------------------
         /**

@@ -21,12 +21,10 @@ package xrope
          */
         public function AbstractLayoutGroup(container:DisplayObjectContainer,
                                             useBounds:Boolean = false,
-                                            autoLayoutWhenAdd:Boolean = false,
                                             autoLayoutWhenChange:Boolean = true)
         {
             _container = container;
             _useBounds = useBounds;
-            _autoLayoutWhenAdd = autoLayoutWhenAdd;
             _autoLayoutWhenChange = autoLayoutWhenChange;
         }
         //======================================================================
@@ -36,8 +34,6 @@ package xrope
         protected var atomMap:Dictionary = new Dictionary();
         /** @private */
         protected var isLayouted:Boolean = false;
-        /** @private */
-        protected var isChanged:Boolean = false;
         //======================================================================
         //  Properties: IXLayoutGroup
         //======================================================================
@@ -78,19 +74,12 @@ package xrope
             {
                 return;
             }
-            if (isLayouted)
+            if (isLayouted && _autoLayoutWhenChange)
             {
-                if (_autoLayoutWhenChange)
+                var change:Number = value - _x;
+                for each (var element:ILayoutElement in _elements)
                 {
-                    var change:Number = value - _x;
-                    for each (var element:ILayoutElement in _elements)
-                    {
-                        element.x += change;
-                    }
-                }
-                else
-                {
-                    isLayouted = true;
+                    element.x += change;
                 }
             }
             _x = value;
@@ -112,19 +101,12 @@ package xrope
             {
                 return;
             }
-            if (isLayouted)
+            if (isLayouted && _autoLayoutWhenChange)
             {
-                if (_autoLayoutWhenChange)
+                var change:Number = value - _y;
+                for each (var element:ILayoutElement in _elements)
                 {
-                    var change:Number = value - _y;
-                    for each (var element:ILayoutElement in _elements)
-                    {
-                        element.y += change;
-                    }
-                }
-                else
-                {
-                    isLayouted = true;
+                    element.y += change;
                 }
             }
             _y = value;
@@ -147,7 +129,6 @@ package xrope
                 return;
             }
             _width = value;
-            isChanged = true;
             checkLayoutAfterChange();
         }
         //------------------------------
@@ -168,7 +149,6 @@ package xrope
                 return;
             }
             _height = value;
-            isChanged = true;
             checkLayoutAfterChange();
         }
         //------------------------------
@@ -212,7 +192,6 @@ package xrope
                 return;
             }
             _align = value;
-            isChanged = true;
             checkLayoutAfterChange();
         }
         //------------------------------
@@ -233,7 +212,6 @@ package xrope
                 return;
             }
             _horizontalGap = value;
-            isChanged = true;
             checkLayoutAfterChange();
         }
         //------------------------------
@@ -254,23 +232,7 @@ package xrope
                 return;
             }
             _verticalGap = value;
-            isChanged = true;
             checkLayoutAfterChange();
-        }
-        //------------------------------
-        //  autoLayoutWhenAdd
-        //------------------------------
-        /** @private */
-        protected var _autoLayoutWhenAdd:Boolean = false;
-        /** @inheritDoc */
-        public function get autoLayoutWhenAdd():Boolean
-        {
-            return _autoLayoutWhenAdd;
-        }
-        /** @private */
-        public function set autoLayoutWhenAdd(value:Boolean):void
-        {
-            _autoLayoutWhenAdd = value;
         }
         //------------------------------
         //  autoLayoutWhenChange
@@ -297,11 +259,14 @@ package xrope
             {
                 elements = elements[0];
             }
+            if (elements.length == 0)
+            {
+                return;
+            }
             for each (var element:* in elements)
             {
                 addOne(element);
             }
-            isChanged = true;
             checkLayoutAfterChange();
         }
         /** @inheritDoc */
@@ -315,7 +280,6 @@ package xrope
             {
                 removeOne(element);
             }
-            isChanged = true;
             checkLayoutAfterChange();
         }
         /** @inheritDoc */
@@ -324,7 +288,6 @@ package xrope
             _elements = [];
             atomMap = new Dictionary();
             isLayouted = false;
-            isChanged = false;
         }
         /** @inheritDoc */
         public function has(element:*):Boolean
@@ -351,7 +314,6 @@ package xrope
                 layoutElements();
             }
             isLayouted = true;
-            isChanged = false;
         }
         /** @inheritDoc */
         public function layoutContainer():void
@@ -368,7 +330,6 @@ package xrope
             }
             layoutElements();
             isLayouted = true;
-            isChanged = false;
         }
         /** @inheritDoc */
         public function reset():void
