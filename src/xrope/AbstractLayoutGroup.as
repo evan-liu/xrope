@@ -31,7 +31,7 @@ package xrope
         //  Protected methods
         //======================================================================
         /** @private */
-        protected var atomMap:Dictionary = new Dictionary();
+        protected var atomLayoutsByDisplayObject:Dictionary = new Dictionary();
         /** @private */
         protected var isLayouted:Boolean = false;
         //======================================================================
@@ -286,7 +286,7 @@ package xrope
         public function removeAll():void
         {
             _elements = new Vector.<ILayoutElement>();
-            atomMap = new Dictionary();
+            atomLayoutsByDisplayObject = new Dictionary();
             isLayouted = false;
         }
         /** @inheritDoc */
@@ -302,7 +302,7 @@ package xrope
             }
             if (element is DisplayObject)
             {
-                return atomMap[element] != null;
+                return atomLayoutsByDisplayObject[element] != null;
             }
             return false;
         }
@@ -370,12 +370,12 @@ package xrope
             {
                 _container.addChild(target);
             }
-            if (atomMap[target])
+            if (atomLayoutsByDisplayObject[target])
             {
                 return;
             }
             var atom:ILayoutElement = createAtom(target);
-            atomMap[target] = atom;
+            atomLayoutsByDisplayObject[target] = atom;
             _elements.push(atom);
         }
         /** @private */
@@ -395,10 +395,10 @@ package xrope
                 }
                 return;
             }
-            if (target is DisplayObject && atomMap[target])
+            if (target is DisplayObject && atomLayoutsByDisplayObject[target])
             {
-                removeOne(atomMap[target]);
-                delete atomMap[target];
+                removeOne(atomLayoutsByDisplayObject[target]);
+                delete atomLayoutsByDisplayObject[target];
             }
         }
         /** @private */

@@ -66,12 +66,9 @@ package xrope
                 return;
             }
             _tileAlign = value;
-            for each (var atom:* in atomMap)
+            for each (var atom:TileLayout in atomLayoutsByDisplayObject)
             {
-                if (atom is TileLayout)
-                {
-                    TileLayout(atom).align = _tileAlign;
-                }
+                atom.align = _tileAlign;
             }
         }
         //------------------------------
@@ -93,12 +90,9 @@ package xrope
                 return;
             }
             _tileWidth = value;
-            for each (var atom:* in atomMap)
+            for each (var atom:TileLayout in atomLayoutsByDisplayObject)
             {
-                if (atom is TileLayout)
-                {
-                    TileLayout(atom).width = _tileWidth;
-                }
+                atom.width = _tileWidth;
             }
         }
         //------------------------------
@@ -120,12 +114,9 @@ package xrope
                 return;
             }
             _tileHeight = value;
-            for each (var atom:* in atomMap)
+            for each (var atom:TileLayout in atomLayoutsByDisplayObject)
             {
-                if (atom is TileLayout)
-                {
-                    TileLayout(atom).height = _tileHeight;
-                }
+                atom.height = _tileHeight;
             }
         }
         //======================================================================
