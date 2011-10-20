@@ -1,5 +1,7 @@
-package
+package xrope.examples
 {
+    import xface.XFace;
+
     import xrope.HLineLayout;
     import xrope.ILayoutGroup;
     import xrope.LayoutAlign;
@@ -10,27 +12,12 @@ package
     import flash.display.Sprite;
     import flash.text.TextField;
 
-    [SWF(width="320", height="270", backgroundColor="0xFFFFFF", frameRate="30")]
-
-    /**
-     * @author eidiot
-     */
-    public class FormExample extends Sprite
+    public class FormExample
     {
-        //======================================================================
-        //  Constructor
-        //======================================================================
-        public function FormExample()
+        [Test]
+        public function test():void
         {
-            super();
-            demo();
-        }
-        //======================================================================
-        //  Private methods
-        //======================================================================
-        private function demo():void
-        {
-            var topGroup:VLineLayout = new VLineLayout(this, 10, 10);
+            var topGroup:VLineLayout = new VLineLayout(XFace.container, 10, 10);
             addLine(topGroup, getLabel("Name:", 40), getInput());
             addLine(topGroup, getLabel("Mail:", 40), getInput());
             addLine(topGroup, getLabel("Site:", 40), getInput());
@@ -38,6 +25,7 @@ package
             addLine(topGroup, getButton("Commit"), getButton("Discard"));
             topGroup.layout();
         }
+
         private function getLabel(text:String, w:Number = -1):DisplayObject
         {
             var tf:TextField = new TextField();
