@@ -1,12 +1,8 @@
 package xrope
 {
-    import xrope.algorithms.BackwardAlgorithm;
-    import xrope.algorithms.CenterAlgorithm;
-    import xrope.algorithms.ForwardAlgorithm;
-    import xrope.algorithms.MaxAlgorithm;
-    import xrope.algorithms.MinAlgorithm;
-
     import flash.display.DisplayObjectContainer;
+    import xrope.algorithms.AlgorithmFactory;
+
     /**
      * Vertical single line layout.
      * @author eidiot
@@ -76,30 +72,12 @@ package xrope
         /** @private */
         override protected function getXAlgorithm():ILayoutAlgorithm
         {
-            switch (_align)
-            {
-                case LayoutAlign.LEFT:
-                case LayoutAlign.TOP_LEFT:
-                case LayoutAlign.BOTTOM_LEFT:
-                    return new MinAlgorithm();
-                case LayoutAlign.RIGHT:
-                case LayoutAlign.TOP_RIGHT:
-                case LayoutAlign.BOTTOM_RIGHT:
-                    return new MaxAlgorithm();
-            }
-            return new CenterAlgorithm();
+            return AlgorithmFactory.getXAlgorithmForVLayout(_align);
         }
         /** @private */
         override protected function getYAlgorithm():ILayoutAlgorithm
         {
-            switch (_align)
-            {
-                case LayoutAlign.BOTTOM:
-                case LayoutAlign.BOTTOM_LEFT:
-                case LayoutAlign.BOTTOM_RIGHT:
-                    return new BackwardAlgorithm();
-            }
-            return new ForwardAlgorithm();
+            return AlgorithmFactory.getYAlgorithmForVLayout(_align);
         }
         //======================================================================
         //  Private methods

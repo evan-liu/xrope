@@ -1,7 +1,5 @@
 package xrope
 {
-    import xrope.algorithms.ForwardAlgorithm;
-
     import flash.display.DisplayObjectContainer;
     /**
      * Abstract class for single line layout.
@@ -80,12 +78,12 @@ package xrope
         /** @private */
         protected function getXAlgorithm():ILayoutAlgorithm
         {
-            return new ForwardAlgorithm();
+            return null;
         }
         /** @private */
         protected function getYAlgorithm():ILayoutAlgorithm
         {
-            return new ForwardAlgorithm();
+            return null;
         }
     }
 }
