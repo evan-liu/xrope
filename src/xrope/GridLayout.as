@@ -94,6 +94,7 @@ package xrope
             {
                 atom.width = _tileWidth;
             }
+            checkLayoutAfterChange();
         }
         //------------------------------
         //  tileHeight
@@ -118,6 +119,7 @@ package xrope
             {
                 atom.height = _tileHeight;
             }
+            checkLayoutAfterChange();
         }
         //======================================================================
         //  Overridden methods
