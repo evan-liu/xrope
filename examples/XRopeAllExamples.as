@@ -12,10 +12,10 @@ package
         public static function suite():Array
         {
             return [
-                LineLayoutSuite,
-                BoxLayoutSuite,
-                MultiLineSuite,
                 GridExample,
+                MultiLineSuite,
+                BoxLayoutSuite,
+                LineLayoutSuite,
                 AlignExample,
                 FormExample,
             ];

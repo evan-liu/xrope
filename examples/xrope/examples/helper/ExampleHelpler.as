@@ -4,6 +4,7 @@ package xrope.examples.helper
     import xrope.ILayoutGroup;
     import xrope.LayoutAlign;
 
+    import flash.display.Graphics;
     import flash.display.Shape;
     import flash.display.Sprite;
     public class ExampleHelpler
@@ -21,14 +22,14 @@ package xrope.examples.helper
         ];
         public static function getShape():Shape
         {
+            var x:Number = 15 - Math.random() * 30;
+            var y:Number = 15 - Math.random() * 30;
+            var width:Number = 15 + Math.random() * 15;
+            var height:Number = 15 + Math.random() * 15;
             var s:Shape = new Shape();
             with (s.graphics)
             {
                 beginFill(Math.random() * 0xFFFFFF);
-                var x:Number = 15 - Math.random() * 30;
-                var y:Number = 15 - Math.random() * 30;
-                var width:Number = 15 + Math.random() * 15;
-                var height:Number = 15 + Math.random() * 15;
                 drawRect(x, y, width, height);
                 endFill();
             }
@@ -58,13 +59,11 @@ package xrope.examples.helper
         }
         public static function drawElementsRim(target:ILayoutGroup, color:uint = 0xBBBBBB):void
         {
-            with (Sprite(target.container).graphics)
+            var graphics:Graphics = Sprite(target.container).graphics;
+            graphics.lineStyle(0, color);
+            for each (var element:ILayoutElement in target.elements)
             {
-                lineStyle(0, color);
-                for each (var element:ILayoutElement in target.elements)
-                {
-                    drawRect(element.x, element.y, element.width, element.height);
-                }
+                graphics.drawRect(element.x, element.y, element.width, element.height);
             }
         }
     }
