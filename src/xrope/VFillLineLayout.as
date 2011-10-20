@@ -1,7 +1,9 @@
 package xrope
 {
-    import flash.display.DisplayObjectContainer;
     import xrope.algorithms.AlgorithmFactory;
+    import xrope.algorithms.ForwardAlgorithm;
+
+    import flash.display.DisplayObjectContainer;
 
 
     public class VFillLineLayout extends AbstractFillLineLayout
@@ -47,7 +49,7 @@ package xrope
         /** @private */
         override protected function getYAlgorithm():ILayoutAlgorithm
         {
-            return AlgorithmFactory.getYAlgorithmForVLayout(_align);
+            return new ForwardAlgorithm();
         }
     }
 }
