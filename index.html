@@ -7,16 +7,7 @@
 </script>
 		<script type="text/javascript">
 //<![CDATA[
-		swfobject.registerObject("Demo", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("GridExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("HMultiLineExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("VMultiLineExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("HBoxExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("VBoxExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("AlignExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("FormExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("HLineExample", "9.0.115", "expressInstall.swf");
-		swfobject.registerObject("VLineExample", "9.0.115", "expressInstall.swf");
+		swfobject.registerObject("Demo", "10.0.0", "expressInstall.swf");
 		//]]>
 		</script>
 		<title>
@@ -63,6 +54,23 @@
 			<div class="description">
 				Simple layout library for native as3 display objects.
 			</div>
+			
+			<h2>
+				<a name="DemoLink" id="DemoLink"></a>Demo (<a href="https://github.com/eidiot/xrope/tree/master/examples" target="_blank" class="liexternal">source</a>)
+			</h2>
+			<div>
+				<object id="Demo" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
+					<param name="movie" value="demo/Demo.swf" />
+					<!--[if !IE]>-->
+					<object type="application/x-shockwave-flash" data="demo/Demo.swf" width="550" height="400">
+						<!--<![endif]-->
+						<p>
+							Alternative content
+						</p><!--[if !IE]>-->
+					</object> <!--<![endif]-->
+				</object>
+			</div>
+			
 			<h2>
 				Features
 			</h2>
@@ -74,7 +82,7 @@
 					AtomLayout align DisplayObject using getBounds(). No worries about register point in FLA. (Set useBounds to true, it’s false by default)
 				</li>
 				<li>
-					Easily composite layout elements/groups. No more DisplayObjectContainer needed. (<a href="#FormExampleLink">example</a>)
+					Easily composite layout elements/groups. No more DisplayObjectContainer needed.
 				</li>
 			</ul>
 			<h2>
@@ -92,188 +100,42 @@
 				</li>
 			</ul>
 			<h2>
-				Layout groups (<a href="doc/index.html" target="_blank">AsDoc</a>)
+				Layout groups
 			</h2>
 			<ul>
 				<li>
-					<strong>HLineLayout</strong> - Horizontal single line layout. (<a href="#HLineExampleLink">example</a>)
+					<strong>HFillLineLayout</strong> - Horizontal single line fill layout. (<strong>*new</strong>)
 				</li>
 				<li>
-					<strong>VLineLayout</strong> - Vertical single line layout. (<a href="#VLineExampleLink">example</a>)
+					<strong>VFillLineLayout</strong> - Vertical single line fill layout. (<strong>*new</strong>)
 				</li>
 				<li>
-					<strong>HMultiLineLayout</strong> - Horizontal multi-line layout. (<a href="#HMultiLineExampleLink">example</a>)
+					<strong>HLineLayout</strong> - Horizontal single line flow layout.
 				</li>
 				<li>
-					<strong>VMultiLineLayout</strong> - Vertical multi-line layout. (<a href="#VMultiLineExampleLink">example</a>)
+					<strong>VLineLayout</strong> - Vertical single line flow layout. 
 				</li>
 				<li>
-					<strong>HBoxLayout</strong> - Horizontal box layout. (<a href="#HBoxExampleLink">example</a>)
+					<strong>HMultiLineLayout</strong> - Horizontal multi-line layout.
 				</li>
 				<li>
-					<strong>VBoxLayout</strong> - Vertical box layout.(<a href="#VBoxExampleLink">example</a>)
+					<strong>VMultiLineLayout</strong> - Vertical multi-line layout.
 				</li>
 				<li>
-					<strong>AlignLayout</strong> - Align position group layout. (<a href="#AlignExampleLink">example</a>)
+					<strong>HBoxLayout</strong> - Horizontal box layout.
 				</li>
 				<li>
-					<strong>GridLayout</strong> - Grid layout. (<a href="#GridExampleLink">example</a>)
+					<strong>VBoxLayout</strong> - Vertical box layout.
+				</li>
+				<li>
+					<strong>AlignLayout</strong> - Align position group layout. 
+				</li>
+				<li>
+					<strong>GridLayout</strong> - Grid layout.
 				</li>
 			</ul>
 			<span><strong>*Note</strong> difference between MultiLineLayout and BoxLayout: Lines in MultiLineLayout has the same height as the lineHeight property, while height of lines in HBoxLayout according to the max height of elements in each line. </span>
-			<h2>
-				<a name="DemoLink" id="DemoLink"></a>Demo (<a href="http://github.com/eidiot/XropeDemo" target="_blank" class="liexternal">source</a>)
-			</h2>
-			<div>
-				<object id="Demo" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
-					<param name="movie" value="demo/XropeDemo.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="demo/XropeDemo.swf" width="550" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<h2>
-				<a name="ExamplesLink" id="ExamplesLink"></a>Examples
-			</h2>
-			<p>
-				<a name="GridExampleLink" id="GridExampleLink"></a><strong>GridExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/GridExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="GridExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
-					<param name="movie" value="examples/GridExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/GridExample.swf" width="550" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="HMultiLineExampleLink" id="HMultiLineExampleLink"></a><strong>HMultiLineExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/HMultiLineExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="HMultiLineExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
-					<param name="movie" value="examples/HMultiLineExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/HMultiLineExample.swf" width="550" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="VMultiLineExampleLink" id="VMultiLineExampleLink"></a><strong>VMultiLineExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/VMultiLineExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="VMultiLineExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="400" height="400">
-					<param name="movie" value="examples/VMultiLineExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/VMultiLineExample.swf" width="400" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="HBoxExampleLink" id="HBoxExampleLink"></a><strong>HBoxExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/HBoxExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="HBoxExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
-					<param name="movie" value="examples/HBoxExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/HBoxExample.swf" width="550" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="VBoxExampleLink" id="VBoxExampleLink"></a><strong>VBoxExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/VBoxExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="VBoxExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="400" height="400">
-					<param name="movie" value="examples/VBoxExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/VBoxExample.swf" width="400" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="AlignExampleLink" id="AlignExampleLink"></a><strong>AlignExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/AlignExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="AlignExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="300" height="200">
-					<param name="movie" value="examples/AlignExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/AlignExample.swf" width="300" height="200">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="FormExampleLink" id="FormExampleLink"></a><strong>FormExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/FormExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="FormExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="320" height="270">
-					<param name="movie" value="examples/FormExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/FormExample.swf" width="320" height="270">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="HLineExampleLink" id="HLineExampleLink"></a><strong>HLineExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/HLineExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="HLineExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
-					<param name="movie" value="examples/HLineExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/HLineExample.swf" width="550" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
-			<p>
-				<a name="VLineExampleLink" id="VLineExampleLink"></a><strong>VLineExample:</strong> (<a href="http://github.com/eidiot/xrope/blob/master/examples/VLineExample.as" target="_blank" class="liexternal">source</a>)
-			</p>
-			<div>
-				<object id="VLineExample" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400">
-					<param name="movie" value="examples/VLineExample.swf" />
-					<!--[if !IE]>-->
-					<object type="application/x-shockwave-flash" data="examples/VLineExample.swf" width="550" height="400">
-						<!--<![endif]-->
-						<p>
-							Alternative content
-						</p><!--[if !IE]>-->
-					</object> <!--<![endif]-->
-				</object>
-			</div>
+			
 			<h2>
 				Authors
 			</h2>
