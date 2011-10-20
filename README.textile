@@ -1,12 +1,12 @@
 h2. Xrope: Simple layout library for native as3 display objects.
 
-"Examples":http://eidiot.github.com/xrope/index.html#ExamplesLink | "Doc":http://eidiot.github.com/xrope/doc/
+"Demo":http://eidiot.github.com/xrope/index.html#DemoLink
 
 h3. Features
 
 * For native as3 display objects. No Flex or any other dependency.
 * AtomLayout align DisplayObject using _getBounds()_. No worries about register point in FLA. (Set _useBounds_ to _true_, it's _false_ by default)
-* Easily composite layout elements/groups. No more DisplayObjectContainer needed. ("example":http://eidiot.github.com/xrope/index.html#FormExampleLink)
+* Easily composite layout elements/groups. No more DisplayObjectContainer needed.
 
 h3. How to use
 
@@ -16,13 +16,15 @@ h3. How to use
 
 h3. Layout groups ("AsDoc":http://eidiot.github.com/xrope/doc/index.html)
 
-* HLineLayout - Horizontal single line layout. ("example":http://eidiot.github.com/xrope/index.html#HLineExampleLink)
-* VLineLayout - Vertical single line layout. ("example":http://eidiot.github.com/xrope/index.html#VLineExampleLink)
-* HMultiLineLayout - Horizontal multi-line layout. ("example":http://eidiot.github.com/xrope/index.html#HMultiLineExampleLink)
-* VMultiLineLayout - Vertical multi-line layout. ("example":http://eidiot.github.com/xrope/index.html#VMultiLineExampleLink)
-* HBoxLayout - Horizontal box layout. ("example":http://eidiot.github.com/xrope/index.html#HBoxExampleLink)
-* VBoxLayout - Vertical box layout.("example":http://eidiot.github.com/xrope/index.html#VBoxExampleLink)
-* AlignLayout - Align position group layout. ("example":http://eidiot.github.com/xrope/index.html#AlignExampleLink)
-* GridLayout - Grid layout. ("example":http://eidiot.github.com/xrope/index.html#GridExampleLink)
+* HFillLineLayout - Horizontal single line fill layout. (*new*)
+* VFillLineLayout - Vertical single line fill layout. (*new*)
+* HLineLayout - Horizontal single line flow layout. 
+* VLineLayout - Vertical single line flow layout.
+* HMultiLineLayout - Horizontal multi-line layout.
+* VMultiLineLayout - Vertical multi-line layout.
+* HBoxLayout - Horizontal box layout.
+* VBoxLayout - Vertical box layout.
+* AlignLayout - Align position group layout. 
+* GridLayout - Grid layout.
 
 *Note* difference between MultiLineLayout and BoxLayout: Lines in MultiLineLayout has the same height as the lineHeight property, while height of lines in HBoxLayout according to the max height of elements in each line.
