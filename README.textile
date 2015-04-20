@@ -1,6 +1,6 @@
 h2. Xrope: Simple layout library for native as3 display objects.
 
-"Demo":http://eidiot.github.com/xrope/index.html#DemoLink
+"Demo":http://evancoding.com/xrope/index.html#DemoLink
 
 h3. Features
 
@@ -14,7 +14,7 @@ h3. How to use
 * Add some display objects or other _ILayoutElement_ to the group.
 * Call the _layout()_ method of the group.
 
-h3. Layout groups ("AsDoc":http://eidiot.github.com/xrope/doc/index.html)
+h3. Layout groups ("AsDoc":http://evancoding.com/xrope/doc/index.html)
 
 * HFillLineLayout - Horizontal single line fill layout. (*new*)
 * VFillLineLayout - Vertical single line fill layout. (*new*)
